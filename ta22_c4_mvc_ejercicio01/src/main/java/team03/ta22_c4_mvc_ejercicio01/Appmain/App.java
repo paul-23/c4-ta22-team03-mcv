@@ -20,5 +20,6 @@ public class App {
 		
 		controlador.iniciarVista();
 		controlador.iniciarBaseDatos();
+		
 	}
 }
