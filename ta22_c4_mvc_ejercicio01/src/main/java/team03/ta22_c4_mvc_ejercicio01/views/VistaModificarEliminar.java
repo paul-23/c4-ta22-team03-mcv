@@ -19,11 +19,9 @@ public class VistaModificarEliminar extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	private JTextField textFieldNombre;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JPanel contentPane;
+	public JTextField textFieldNombre, textFieldApellido, textFieldDireccion, textFieldDNI;
+	public JButton btnEliminar, btnCancelar, btnModificar;
+	public JPanel contentPane;
 
 	public VistaModificarEliminar() {
 		setTitle("Modificar / Eliminar Cliente");
@@ -57,45 +55,45 @@ public class VistaModificarEliminar extends JFrame {
 		lblApellido.setBounds(323, 88, 84, 44);
 		contentPane.add(lblApellido);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Arial", Font.PLAIN, 20));
-		textField.setColumns(10);
-		textField.setBounds(407, 88, 221, 44);
-		contentPane.add(textField);
+		textFieldApellido = new JTextField();
+		textFieldApellido.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldApellido.setColumns(10);
+		textFieldApellido.setBounds(407, 88, 221, 44);
+		contentPane.add(textFieldApellido);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Dirección:");
 		lblNewLabel_2_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblNewLabel_2_1.setBounds(28, 157, 122, 44);
 		contentPane.add(lblNewLabel_2_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Arial", Font.PLAIN, 20));
-		textField_1.setColumns(10);
-		textField_1.setBounds(125, 157, 747, 44);
-		contentPane.add(textField_1);
+		textFieldDireccion = new JTextField();
+		textFieldDireccion.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldDireccion.setColumns(10);
+		textFieldDireccion.setBounds(125, 157, 747, 44);
+		contentPane.add(textFieldDireccion);
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("DNI:");
 		lblNewLabel_2_1_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblNewLabel_2_1_1.setBounds(643, 88, 54, 44);
 		contentPane.add(lblNewLabel_2_1_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Arial", Font.PLAIN, 20));
-		textField_2.setColumns(10);
-		textField_2.setBounds(696, 88, 176, 44);
-		contentPane.add(textField_2);
+		textFieldDNI = new JTextField();
+		textFieldDNI.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldDNI.setColumns(10);
+		textFieldDNI.setBounds(696, 88, 176, 44);
+		contentPane.add(textFieldDNI);
 		
-		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnEliminar.setBounds(403, 228, 142, 44);
 		contentPane.add(btnEliminar);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnCancelar.setBounds(555, 228, 142, 44);
 		contentPane.add(btnCancelar);
 		
-		JButton btnModificar = new JButton("Modificar");
+		btnModificar = new JButton("Modificar");
 		btnModificar.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnModificar.setBounds(250, 228, 142, 44);
 		contentPane.add(btnModificar);

@@ -19,10 +19,8 @@ public class VistaAñadir extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
-	private JTextField textFieldNombre;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	public JTextField textFieldNombre, textFieldApellido, textFieldDireccion, textFieldDNI;
+	public JButton btnAñadir, btnCancelar;
 
 	public VistaAñadir() {
 		setTitle("Añadir Usuario");
@@ -56,40 +54,40 @@ public class VistaAñadir extends JFrame {
 		lblApellido.setBounds(323, 88, 84, 44);
 		contentPane.add(lblApellido);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Arial", Font.PLAIN, 20));
-		textField.setColumns(10);
-		textField.setBounds(407, 88, 221, 44);
-		contentPane.add(textField);
+		textFieldApellido = new JTextField();
+		textFieldApellido.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldApellido.setColumns(10);
+		textFieldApellido.setBounds(407, 88, 221, 44);
+		contentPane.add(textFieldApellido);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Dirección:");
 		lblNewLabel_2_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblNewLabel_2_1.setBounds(28, 157, 122, 44);
 		contentPane.add(lblNewLabel_2_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Arial", Font.PLAIN, 20));
-		textField_1.setColumns(10);
-		textField_1.setBounds(125, 157, 747, 44);
-		contentPane.add(textField_1);
+		textFieldDireccion = new JTextField();
+		textFieldDireccion.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldDireccion.setColumns(10);
+		textFieldDireccion.setBounds(125, 157, 747, 44);
+		contentPane.add(textFieldDireccion);
 		
 		JLabel lblNewLabel_2_1_1 = new JLabel("DNI:");
 		lblNewLabel_2_1_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblNewLabel_2_1_1.setBounds(643, 88, 54, 44);
 		contentPane.add(lblNewLabel_2_1_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Arial", Font.PLAIN, 20));
-		textField_2.setColumns(10);
-		textField_2.setBounds(696, 88, 176, 44);
-		contentPane.add(textField_2);
+		textFieldDNI = new JTextField();
+		textFieldDNI.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldDNI.setColumns(10);
+		textFieldDNI.setBounds(696, 88, 176, 44);
+		contentPane.add(textFieldDNI);
 		
-		JButton btnAñadir = new JButton("Añadir");
+		btnAñadir = new JButton("Añadir");
 		btnAñadir.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnAñadir.setBounds(315, 231, 142, 44);
 		contentPane.add(btnAñadir);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnCancelar.setBounds(467, 231, 142, 44);
 		contentPane.add(btnCancelar);

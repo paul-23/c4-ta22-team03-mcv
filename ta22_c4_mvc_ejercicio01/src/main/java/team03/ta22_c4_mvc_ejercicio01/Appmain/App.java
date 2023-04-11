@@ -2,10 +2,7 @@ package team03.ta22_c4_mvc_ejercicio01.Appmain;
 
 import team03.ta22_c4_mvc_ejercicio01.controllers.ControladorInicio;
 import team03.ta22_c4_mvc_ejercicio01.models.ModeloCliente;
-import team03.ta22_c4_mvc_ejercicio01.views.VistaAñadir;
-import team03.ta22_c4_mvc_ejercicio01.views.VistaModificarEliminar;
 import team03.ta22_c4_mvc_ejercicio01.views.VistaPrincipal;
-import team03.ta22_c4_mvc_ejercicio01.views.VistaSeleccionar;
 
 /**
  * @author Team 03 (Alejandro, Arnau y Paul)

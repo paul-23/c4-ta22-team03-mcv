@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JTable;
 
 /**
  * @author Team 03 (Alejandro, Arnau y Paul)
@@ -18,14 +19,15 @@ public class VistaPrincipal extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
-	public JButton btnAñadirCliente, btnModificarCliente, btnEliminarCliente, btnConsultarCliente;
+	public JButton btnAñadirCliente, btnModificarEliminarCliente;
+	public JTable table;
 
 	/**
 	 * Create the frame.
 	 */
 	public VistaPrincipal() {
 		setResizable(false);
-		setBounds(100, 100, 433, 364);
+		setBounds(100, 100, 966, 739);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -33,25 +35,24 @@ public class VistaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Escoje una opción");
-		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 20));
+		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 32));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(61, 36, 268, 52);
+		lblNewLabel.setBounds(218, 36, 516, 52);
 		contentPane.add(lblNewLabel);
 		
 		btnAñadirCliente = new JButton("Añadir Cliente");
-		btnAñadirCliente.setBounds(45, 138, 150, 46);
+		btnAñadirCliente.setFont(new Font("Arial", Font.PLAIN, 19));
+		btnAñadirCliente.setBounds(116, 111, 177, 46);
 		contentPane.add(btnAñadirCliente);
 		
-		btnModificarCliente = new JButton("Modificar Cliente");
-		btnModificarCliente.setBounds(207, 138, 150, 46);
-		contentPane.add(btnModificarCliente);
+		btnModificarEliminarCliente = new JButton("Consultar / Modificar / Eliminar Cliente");
+		btnModificarEliminarCliente.setFont(new Font("Arial", Font.PLAIN, 19));
+		btnModificarEliminarCliente.setBounds(338, 111, 495, 46);
+		contentPane.add(btnModificarEliminarCliente);
 		
-		btnEliminarCliente = new JButton("Eliminar Cliente");
-		btnEliminarCliente.setBounds(45, 195, 150, 46);
-		contentPane.add(btnEliminarCliente);
-		
-		btnConsultarCliente = new JButton("Consultar Cliente");
-		btnConsultarCliente.setBounds(207, 195, 150, 46);
-		contentPane.add(btnConsultarCliente);
+		table = new JTable();
+		table.setEnabled(false);
+		table.setBounds(41, 190, 870, 486);
+		contentPane.add(table);
 	}
 }
