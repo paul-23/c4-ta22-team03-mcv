@@ -2,6 +2,8 @@ package team03.ta22_c4_mvc_ejercicio01.models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
@@ -10,7 +12,12 @@ import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
-public class Cliente {
+/**
+ * @author Team 03 (Alejandro, Arnau y Paul)
+ *
+ */
+
+public class ModeloCliente {
 	
 	Connection connection;
 	private int id;
@@ -132,7 +139,7 @@ public class Cliente {
 			connection.close();
 			JOptionPane.showMessageDialog(null, "Se ha finalizado la conexión con el servidor");
 		} catch (SQLException ex) {
-			Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 
@@ -148,9 +155,37 @@ public class Cliente {
 			st.executeUpdate(Query);
 			JOptionPane.showMessageDialog(null, "Se ha creado la base de datos " + name + " de forma exito");
 		} catch (SQLException ex) {
-			Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+	
+	public String checkID(String table_name, int IDIntroducido) {
+        try {
+            String Querydb = "USE CLIENTES;";
+            Statement stdb = connection.createStatement();
+            stdb.executeUpdate(Querydb);
+
+            String query = "SELECT ID FROM " + table_name;
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+            
+            while (rs.next()) {
+                for (int i = 1; i <= columnCount; i++) {
+                	if (IDIntroducido == rs.getInt(i)) {
+						return rs.getString(i);
+					}
+                }
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            System.out.println("Error en la adquisicion de datos");
+
+        }
+		return "";
+    }
 
 	public void createTable(String db, String query) {
 		System.out.println("-------------------------------------------------------------\n"

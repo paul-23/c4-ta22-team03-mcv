@@ -8,17 +8,24 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 
+/**
+ * @author Team 03 (Alejandro, Arnau y Paul)
+ *
+ */
+
 public class VistaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
+	public JButton btnAñadirCliente, btnModificarCliente, btnEliminarCliente, btnConsultarCliente;
 
 	/**
 	 * Create the frame.
 	 */
 	public VistaPrincipal() {
-		setBounds(100, 100, 417, 269);
+		setResizable(false);
+		setBounds(100, 100, 433, 364);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -31,12 +38,20 @@ public class VistaPrincipal extends JFrame {
 		lblNewLabel.setBounds(61, 36, 268, 52);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Añadir Cliente");
-		btnNewButton.setBounds(45, 138, 150, 46);
-		contentPane.add(btnNewButton);
+		btnAñadirCliente = new JButton("Añadir Cliente");
+		btnAñadirCliente.setBounds(45, 138, 150, 46);
+		contentPane.add(btnAñadirCliente);
 		
-		JButton btnNewButton_1_1_1 = new JButton("Consultar Cliente");
-		btnNewButton_1_1_1.setBounds(207, 138, 150, 46);
-		contentPane.add(btnNewButton_1_1_1);
+		btnModificarCliente = new JButton("Modificar Cliente");
+		btnModificarCliente.setBounds(207, 138, 150, 46);
+		contentPane.add(btnModificarCliente);
+		
+		btnEliminarCliente = new JButton("Eliminar Cliente");
+		btnEliminarCliente.setBounds(45, 195, 150, 46);
+		contentPane.add(btnEliminarCliente);
+		
+		btnConsultarCliente = new JButton("Consultar Cliente");
+		btnConsultarCliente.setBounds(207, 195, 150, 46);
+		contentPane.add(btnConsultarCliente);
 	}
 }

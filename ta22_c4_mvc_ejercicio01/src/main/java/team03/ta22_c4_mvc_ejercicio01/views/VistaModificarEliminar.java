@@ -1,31 +1,32 @@
 package team03.ta22_c4_mvc_ejercicio01.views;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 /**
  * @author Team 03 (Alejandro, Arnau y Paul)
  *
  */
 
-public class VistaAñadir extends JFrame {
+public class VistaModificarEliminar extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
-	private JPanel contentPane;
 	private JTextField textFieldNombre;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JPanel contentPane;
 
-	public VistaAñadir() {
-		setTitle("Añadir Usuario");
+	public VistaModificarEliminar() {
+		setTitle("Modificar / Eliminar Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 907, 345);
 		contentPane = new JPanel();
@@ -39,10 +40,10 @@ public class VistaAñadir extends JFrame {
 		lblNewLabel.setBounds(28, 88, 122, 44);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Añadir Clientes");
+		JLabel lblNewLabel_1 = new JLabel("Modificar / Eliminar Cliente");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Arial Black", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(323, 11, 250, 44);
+		lblNewLabel_1.setBounds(277, 11, 338, 44);
 		contentPane.add(lblNewLabel_1);
 		
 		textFieldNombre = new JTextField();
@@ -84,14 +85,20 @@ public class VistaAñadir extends JFrame {
 		textField_2.setBounds(696, 88, 176, 44);
 		contentPane.add(textField_2);
 		
-		JButton btnAñadir = new JButton("Añadir");
-		btnAñadir.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnAñadir.setBounds(315, 231, 142, 44);
-		contentPane.add(btnAñadir);
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnEliminar.setBounds(403, 228, 142, 44);
+		contentPane.add(btnEliminar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnCancelar.setBounds(467, 231, 142, 44);
+		btnCancelar.setBounds(555, 228, 142, 44);
 		contentPane.add(btnCancelar);
+		
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setFont(new Font("Arial", Font.PLAIN, 20));
+		btnModificar.setBounds(250, 228, 142, 44);
+		contentPane.add(btnModificar);
 	}
+
 }
