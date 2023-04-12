@@ -285,7 +285,7 @@ public class ModeloCliente {
 				+ "\n-------------------------------------------------------------");
 		try {
 			String Query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) VALUE (" + "\"" + nombre
-					+ "\", \"" + apellido + "\", \"" + direccion + "\", '" + Integer.parseInt(dni) + "', '" + fecha
+					+ "\", \"" + apellido + "\", \"" + direccion + "\", '" + dni + "', '" + fecha
 					+ "');";
 			String Querydb = "USE CLIENTES;";
 			Statement stdb = getConnection().createStatement();
