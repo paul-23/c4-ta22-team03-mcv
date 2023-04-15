@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
  *
  */
 
-public class vistaModificarEliminar extends JFrame {
+public class vistaModificarEliminarProyectos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -25,9 +25,10 @@ public class vistaModificarEliminar extends JFrame {
 	public JButton btnModificar;
 	public JButton btnCancelar;
 	public JButton btnEliminar;
+	private JTextField textField;
 	
-	public vistaModificarEliminar() {
-		setTitle("Modificar / Eliminar Cientifico");
+	public vistaModificarEliminarProyectos() {
+		setTitle("Modificar / Eliminar Proyecto");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 907, 345);
 		contentPane = new JPanel();
@@ -41,7 +42,7 @@ public class vistaModificarEliminar extends JFrame {
 		lblNewLabel.setBounds(28, 88, 122, 44);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Modificar / Eliminar Cientifico");
+		JLabel lblNewLabel_1 = new JLabel("Modificar / Eliminar Proyecto");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(277, 11, 338, 44);
@@ -53,7 +54,7 @@ public class vistaModificarEliminar extends JFrame {
 		contentPane.add(textFieldNombre);
 		textFieldNombre.setColumns(10);
 		
-		JLabel lblNewLabel_2_1_1 = new JLabel("DNI:");
+		JLabel lblNewLabel_2_1_1 = new JLabel("ID:");
 		lblNewLabel_2_1_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblNewLabel_2_1_1.setBounds(643, 88, 54, 44);
 		contentPane.add(lblNewLabel_2_1_1);
@@ -78,6 +79,16 @@ public class vistaModificarEliminar extends JFrame {
 		btnModificar.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnModificar.setBounds(250, 228, 142, 44);
 		contentPane.add(btnModificar);
+		
+		JLabel lblHoras = new JLabel("Horas:");
+		lblHoras.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblHoras.setBounds(336, 154, 122, 44);
+		contentPane.add(lblHoras);
+		
+		textField = new JTextField();
+		textField.setFont(new Font("Arial", Font.PLAIN, 20));
+		textField.setColumns(10);
+		textField.setBounds(415, 154, 176, 44);
+		contentPane.add(textField);
 	}
-
 }

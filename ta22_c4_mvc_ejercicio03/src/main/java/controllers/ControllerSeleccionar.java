@@ -17,7 +17,7 @@ public class ControllerSeleccionar implements ActionListener {
 
 	public ControllerSeleccionar(ModelBD modelo) {
 		this.modelo = modelo;
-		this.vistaSeleccionar.textFieldIDCliente.addActionListener(this);
+		this.vistaSeleccionar.textFieldIDCientifico.addActionListener(this);
 		this.vistaSeleccionar.btnBuscar.addActionListener(this);
 	}
 	
@@ -27,17 +27,17 @@ public class ControllerSeleccionar implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (vistaSeleccionar.textFieldIDCliente == e.getSource() || vistaSeleccionar.btnBuscar == e.getSource()) {
-			if (!"".equals(vistaSeleccionar.textFieldIDCliente.getText())) {
-				if (vistaSeleccionar.textFieldIDCliente.getText().equals(modelo.checkID("Clientes", Integer.parseInt(vistaSeleccionar.textFieldIDCliente.getText())))) {
-					ControllerModificarEliminar me = new ControllerModificarEliminar(modelo, Integer.parseInt(vistaSeleccionar.textFieldIDCliente.getText()));
+		if (vistaSeleccionar.textFieldIDCientifico == e.getSource() || vistaSeleccionar.btnBuscar == e.getSource()) {
+			if (!"".equals(vistaSeleccionar.textFieldIDCientifico.getText())) {
+				if (vistaSeleccionar.textFieldIDCientifico.getText().equals(modelo.checkDNI("Cientificos", Integer.parseInt(vistaSeleccionar.textFieldIDCientifico.getText())))) {
+					ControllerModificarEliminar me = new ControllerModificarEliminar(modelo, Integer.parseInt(vistaSeleccionar.textFieldIDCientifico.getText()));
 					me.iniciar();
 					vistaSeleccionar.setVisible(false);
 				} else {
-					JOptionPane.showMessageDialog(vistaSeleccionar.getContentPane(), "El cliente seleccionado no existe");
+					JOptionPane.showMessageDialog(vistaSeleccionar.getContentPane(), "El Cientifico seleccionado no existe");
 				}
 			} else {
-				JOptionPane.showMessageDialog(vistaSeleccionar.getContentPane(), "No has introducido ninguna ID");
+				JOptionPane.showMessageDialog(vistaSeleccionar.getContentPane(), "No has introducido ningun DNI");
 			}
 		} 
 			

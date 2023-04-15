@@ -5,6 +5,7 @@ import models.ModelBD;
 import views.vistaAñadir;
 import views.vistaModificarEliminar;
 import views.vistaPrincipal;
+import views.vistaPrincipalProyectos;
 import views.vistaSeleccionar;
 
 
@@ -21,8 +22,10 @@ public class App {
 		vistaPrincipal vistaPrincipal = new vistaPrincipal();
 		
 		ControladorInicio controlador = new ControladorInicio(modelo, vistaPrincipal);
-		
+		vistaPrincipalProyectos vpp = new vistaPrincipalProyectos();
 		controlador.iniciarVista();
 		controlador.iniciarBaseDatos();
+		
+		
 	}
 }

@@ -15,7 +15,7 @@ import javax.swing.JButton;
  *
  */
 
-public class vistaSeleccionar extends JFrame {
+public class vistaSeleccionarProyectos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,7 +24,7 @@ public class vistaSeleccionar extends JFrame {
 	public JButton btnBuscar;
 	private JButton btnCancelar;
 
-	public vistaSeleccionar() {
+	public vistaSeleccionarProyectos() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 409, 381);
 		contentPane = new JPanel();
@@ -33,13 +33,13 @@ public class vistaSeleccionar extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Selecciona un Cientifico");
+		JLabel lblNewLabel = new JLabel("Selecciona un Proyecto");
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(70, 42, 255, 57);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("ID Cientifico");
+		JLabel lblNewLabel_1 = new JLabel("ID Proyecto");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(38, 156, 104, 29);
 		contentPane.add(lblNewLabel_1);

@@ -158,14 +158,51 @@ public class ModelBD {
 			Logger.getLogger(ModelBD.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+	public void consultarCinetificos(int idParametro) {
 
-	public String checkID(String table_name, int IDIntroducido) {
 		try {
-			String Querydb = "USE CLIENTES;";
+			String Querydb = "USE CIENTIFICOS;";
+			String Query = "SELECT nombre,  dni from cliente WHERE id='" + idParametro + "';";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			ResultSet registro = stdb.executeQuery(Query);
+
+			if (registro.next() == true) {
+				nombre = (registro.getString("nombre"));
+				dni = (registro.getInt("dni"));
+			} else {
+				System.out.println("No existe ningún cliente con ese id.");
+			}
+
+			System.out.println("Datos obtenidos correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener cliente");
+		}
+	}
+
+	public void modificarCientifico(int dni, String nombre) {
+		try {
+			String Querydb = "USE CIENTIFICO;";
+			String Query = "UPDATE cientifico SET nombre='" + nombre +
+				   "' WHERE DNI='"	+ dni + "';";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			stdb.executeUpdate(Query);
+
+			JOptionPane.showMessageDialog(null, "Cientifico actualizado correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al actualizar cientifico");
+		}
+	}
+	public String checkDNI(String table_name, int IDIntroducido) {
+		try {
+			String Querydb = "USE CIENTIFICOS;";
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String query = "SELECT ID FROM " + table_name;
+			String query = "SELECT DNI FROM " + table_name;
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			ResultSetMetaData rsmd = rs.getMetaData();
@@ -186,7 +223,43 @@ public class ModelBD {
 		}
 		return "";
 	}
+	public void eliminarCientifico(int idParametro) {
+		try {
+			String Querydb = "USE CLIENTES;";
+			String Query = "DELETE FROM cliente WHERE id='" + idParametro + "';";
 
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			stdb.executeUpdate(Query);
+
+			JOptionPane.showMessageDialog(null, "Cliente eliminado correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al eliminar cliente");
+		}
+	}
+	public void consultarcientificos(int idParametro) {
+
+		try {
+			String Query = "SELECT DNI, nombre, direccion, dni from cliente WHERE id='" + idParametro + "';";
+			String Querydb = "USE CIENTIFICOS;";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			ResultSet registro = stdb.executeQuery(Query);
+
+			if (registro.next() == true) {
+				nombre = (registro.getString("nombre"));
+				dni = (registro.getInt("dni"));
+			} else {
+				System.out.println("No existe ningún cientifico con ese dni.");
+			}
+
+			System.out.println("Datos obtenidos correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener cientifico");
+		}
+	}
 	public void createTable(String db, String query) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos crear la tabla" + "\n-------------------------------------------------------------");
@@ -217,5 +290,10 @@ public class ModelBD {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null, "Error en el aleacenamiento");
 		}
+	}
+
+	public void modificarCientifico(int iDSeleccionado, String text, String text2, String string) {
+		// TODO Auto-generated method stub
+		
 	}
 }

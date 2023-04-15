@@ -3,8 +3,12 @@ package controllers;
 import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 import models.ModelBD;
 import views.vistaAñadir;
@@ -25,10 +29,10 @@ public class ControladorInicio implements ActionListener {
 	public ControladorInicio(ModelBD modelo, vistaPrincipal vista) {
 		this.modelo = modelo;
 		this.vista = vista;
-		this.vista.btnAñadirCliente.addActionListener(this);
-		this.vista.btnModificarCliente.addActionListener(this);
-		this.vista.btnEliminarCliente.addActionListener(this);
-		this.vista.btnConsultarCliente.addActionListener(this);
+		this.vista.btnAñadirCientifico.addActionListener(this);
+		this.vista.btnModificarCientifico.addActionListener(this);
+		this.vista.btnEliminarCientifico.addActionListener(this);
+		this.vista.btnConsultarCientifico.addActionListener(this);
 	}
 	
 	public void iniciarVista() {
@@ -69,15 +73,41 @@ public class ControladorInicio implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (vista.btnAñadirCliente == e.getSource()) {
+		if (vista.btnAñadirCientifico == e.getSource()) {
 			vista.setVisible(false);
 			vistaAñadir.setVisible(true);
-		} else if (vista.btnConsultarCliente == e.getSource() || vista.btnEliminarCliente == e.getSource()
-				|| vista.btnModificarCliente == e.getSource()) {
+		} else if (vista.btnConsultarCientifico == e.getSource() || vista.btnEliminarCientifico == e.getSource()
+				|| vista.btnModificarCientifico == e.getSource()) {
 			vista.setVisible(false);
 			ControllerSeleccionar cs = new ControllerSeleccionar(modelo);
 			cs.iniciar();
 		}
+	}
+
+		public void mostrarCientifico() {
+		ResultSet registro = modelo.consultarTodosCientificos();
+		String[] columnNames = { "Nombre", "DNI" };
+		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+		try {
+
+			while (registro.next()) {
+
+				String nombre = registro.getString("nombre");
+				String dni = Integer.toString(registro.getInt("dni"));
+
+				Object data[] = {  nombre, dni};
+
+				tableModel.addRow(data);
+
+			}
+
+			vista.table.setModel(tableModel);
+
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener clientes");
+		}
+		;
 	}
 
 }
