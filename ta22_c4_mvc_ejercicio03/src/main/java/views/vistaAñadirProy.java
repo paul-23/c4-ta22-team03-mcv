@@ -16,11 +16,12 @@ import javax.swing.JButton;
 public class vistaAñadirProy extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
-	private JPanel contentPane;
-	private JTextField textFieldNombre;
+	public JButton btnAñadir;
+	public JButton btnCancelar;
+	public JPanel contentPane;
+	public static JTextField textFieldNombre;
 
-	private JTextField textField_2;
+	public static JTextField textField_2;
 
 	public vistaAñadirProy() {
 		setTitle("Añadir Proyectos");
@@ -37,7 +38,6 @@ public class vistaAñadirProy extends JFrame {
 		lblNewLabel.setBounds(28, 21, 122, 44);
 		contentPane.add(lblNewLabel);
 		
-	
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -70,13 +70,13 @@ public class vistaAñadirProy extends JFrame {
 		textFieldNombre.setColumns(10);
 		
 		
-		JButton btnAñadir = new JButton("Añadir");
+		 btnAñadir = new JButton("Añadir");
 		btnAñadir.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnAñadir.setBounds(315, 231, 142, 44);
 		contentPane.add(btnAñadir);
 		
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		 btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnCancelar.setBounds(467, 231, 142, 44);
 		contentPane.add(btnCancelar);

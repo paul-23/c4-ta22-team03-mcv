@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import models.ModelBD;
+import models.ModelBDProy;
+//import models.ModelBDProy;
 import views.vistaAñadir;
 import views.vistaPrincipal;
 import views.vistaSeleccionar;
@@ -24,6 +26,8 @@ public class ControladorInicio implements ActionListener {
 
 	vistaAñadir vistaAñadir = new vistaAñadir();
 	ModelBD modelo;
+	//ModelBDProy modeloProy;
+
 	vistaPrincipal vista;
 
 	public ControladorInicio(ModelBD modelo, vistaPrincipal vista) {
@@ -35,6 +39,10 @@ public class ControladorInicio implements ActionListener {
 		this.vista.btnConsultarCientifico.addActionListener(this);
 	}
 	
+	public ControladorInicio(ModelBDProy modelo2, vistaPrincipal vistaPrincipal) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void iniciarVista() {
 		vista.setTitle("Asignacion de proyectos a cientificos");
 		vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -106,8 +114,7 @@ public class ControladorInicio implements ActionListener {
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null, "Error al obtener clientes");
-		}
-		;
+		};
 	}
-
+		
 }

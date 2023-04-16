@@ -20,7 +20,7 @@ public class vistaSeleccionarProyectos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
-	public JTextField textFieldIDCientifico;
+	public static JTextField textFieldIDProyectos;
 	public JButton btnBuscar;
 	private JButton btnCancelar;
 
@@ -41,14 +41,14 @@ public class vistaSeleccionarProyectos extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("ID Proyecto");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(38, 156, 104, 29);
+		lblNewLabel_1.setBounds(10, 156, 132, 29);
 		contentPane.add(lblNewLabel_1);
 		
-		textFieldIDCientifico = new JTextField();
-		textFieldIDCientifico.setFont(new Font("Arial", Font.PLAIN, 20));
-		textFieldIDCientifico.setBounds(164, 147, 197, 46);
-		contentPane.add(textFieldIDCientifico);
-		textFieldIDCientifico.setColumns(10);
+		textFieldIDProyectos = new JTextField();
+		textFieldIDProyectos.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldIDProyectos.setBounds(164, 147, 197, 46);
+		contentPane.add(textFieldIDProyectos);
+		textFieldIDProyectos.setColumns(10);
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setFont(new Font("Arial", Font.PLAIN, 20));

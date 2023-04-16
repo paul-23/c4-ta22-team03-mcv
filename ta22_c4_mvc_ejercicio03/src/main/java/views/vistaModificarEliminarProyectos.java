@@ -20,12 +20,12 @@ public class vistaModificarEliminarProyectos extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	public JTextField textFieldNombre;
-	public JTextField textFieldDNI;
+	public JTextField textFieldID;
 	public JPanel contentPane;
 	public JButton btnModificar;
 	public JButton btnCancelar;
 	public JButton btnEliminar;
-	private JTextField textField;
+	public JTextField textField;
 	
 	public vistaModificarEliminarProyectos() {
 		setTitle("Modificar / Eliminar Proyecto");
@@ -59,11 +59,11 @@ public class vistaModificarEliminarProyectos extends JFrame {
 		lblNewLabel_2_1_1.setBounds(643, 88, 54, 44);
 		contentPane.add(lblNewLabel_2_1_1);
 		
-		textFieldDNI = new JTextField();
-		textFieldDNI.setFont(new Font("Arial", Font.PLAIN, 20));
-		textFieldDNI.setColumns(10);
-		textFieldDNI.setBounds(696, 88, 176, 44);
-		contentPane.add(textFieldDNI);
+		textFieldID = new JTextField();
+		textFieldID.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldID.setColumns(10);
+		textFieldID.setBounds(696, 88, 176, 44);
+		contentPane.add(textFieldID);
 		
 		 btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Arial", Font.PLAIN, 20));

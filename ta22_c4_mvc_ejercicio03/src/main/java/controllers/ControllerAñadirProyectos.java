@@ -7,23 +7,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
-import models.ModelBD;
-import views.vistaAñadir;
+import models.ModelBDProy;
+import views.vistaAñadirProy;
 import views.vistaPrincipal;
 
 /**
  * @author Team 03 (Alejandro, Arnau y Paul)
  *
  */
-public class ControllerAñadir implements ActionListener {
+public class ControllerAñadirProyectos implements ActionListener {
 	
 	LocalDate fecha = LocalDate.now();
 	
-	vistaAñadir vistaAñadir = new vistaAñadir();
+	vistaAñadirProy vistaAñadir = new vistaAñadirProy();
 	vistaPrincipal vistaPrincipal = new vistaPrincipal();
-	ModelBD modelo;
+	ModelBDProy modelo;
 	
-	public ControllerAñadir (ModelBD modelo) {
+	public ControllerAñadirProyectos () {
 		this.modelo = modelo;
 		this.vistaAñadir.btnAñadir.addActionListener(this);
 		this.vistaAñadir.btnCancelar.addActionListener(this);
@@ -37,16 +37,16 @@ public class ControllerAñadir implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (vistaAñadir.btnAñadir == e.getSource()) {
 			System.out.println("btnañadir");
-			modelo.insertData(vistaAñadir.textFieldNombre.getText(), vistaAñadir.textField_2.getText());
+			modelo.insertData(vistaAñadirProy.textFieldNombre.getText(), vistaAñadirProy.textField_2.getText());
 			vistaAñadir.setVisible(false);
-			ControladorInicioProyectos ci = new ControladorInicioProyectos(modelo, vistaPrincipal);
+			ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
 			ci.iniciarVista();
 			ci.mostrarProyecto();
 		} else if (vistaAñadir.btnCancelar == e.getSource()) {
 			vistaAñadir.setVisible(false);
 			ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
 			ci.iniciarVista();
-			ci.mostrarCientifico();
+			ci.mostrarProyecto();
 		}
 	}
 	

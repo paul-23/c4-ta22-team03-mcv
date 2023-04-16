@@ -2,6 +2,7 @@ package views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -22,6 +23,7 @@ public class vistaPrincipalProyectos extends JFrame {
 	public JButton btnModificarProyecto; 
 	public JButton btnEliminarProyecto;
 	public JButton btnConsultarProyecto;
+	public JTable table;
 
 	/**
 	 * Create the frame.
@@ -56,5 +58,10 @@ public class vistaPrincipalProyectos extends JFrame {
 		btnConsultarProyecto = new JButton("Consultar Proyecto");
 		btnConsultarProyecto.setBounds(207, 195, 150, 46);
 		contentPane.add(btnConsultarProyecto);
+		
+		table = new JTable();
+		table.setEnabled(false);
+		table.setBounds(41, 190, 870, 486);
+		contentPane.add(table);
 	}
 }

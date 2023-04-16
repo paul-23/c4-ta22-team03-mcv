@@ -65,7 +65,6 @@ public class ControllerModificarEliminar implements ActionListener {
 		if (vistaModificarEliminar.btnModificar == e.getSource()) {
 
 			modelo.modificarCientifico(IDSeleccionado, vistaModificarEliminar.textFieldNombre.getText(),
-					
 					 vistaModificarEliminar.textFieldDNI.getText(),
 					fecha.toString());
 			cerrarVentanaVolverInicio();

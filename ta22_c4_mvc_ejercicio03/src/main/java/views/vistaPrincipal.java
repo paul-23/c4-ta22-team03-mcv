@@ -2,6 +2,7 @@ package views;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -22,6 +23,7 @@ public class vistaPrincipal extends JFrame {
 	public JButton btnModificarCientifico; 
 	public JButton btnEliminarCientifico;
 	public JButton btnConsultarCientifico;
+public JTable table;
 
 	/**
 	 * Create the frame.
@@ -56,5 +58,11 @@ public class vistaPrincipal extends JFrame {
 		btnConsultarCientifico = new JButton("Consultar Cientifico");
 		btnConsultarCientifico.setBounds(207, 195, 150, 46);
 		contentPane.add(btnConsultarCientifico);
+		
+		table = new JTable();
+		table.setEnabled(false);
+		table.setBounds(41, 190, 870, 486);
+		contentPane.add(table);
 	}
-}
+	}
+
