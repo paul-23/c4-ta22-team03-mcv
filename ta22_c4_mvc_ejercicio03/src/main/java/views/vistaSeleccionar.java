@@ -22,10 +22,9 @@ public class vistaSeleccionar extends JFrame {
 	private JPanel contentPane;
 	public JTextField textFieldIDCientifico;
 	public JButton btnBuscar;
-	private JButton btnCancelar;
+	public JButton btnCancelar;
 
 	public vistaSeleccionar() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 409, 381);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

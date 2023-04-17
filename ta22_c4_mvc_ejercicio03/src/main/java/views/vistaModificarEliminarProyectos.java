@@ -18,7 +18,6 @@ import javax.swing.border.EmptyBorder;
 public class vistaModificarEliminarProyectos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	
 	public JTextField textFieldNombre;
 	public JTextField textFieldID;
 	public JPanel contentPane;
@@ -27,9 +26,8 @@ public class vistaModificarEliminarProyectos extends JFrame {
 	public JButton btnEliminar;
 	public JTextField textField;
 	
-	public vistaModificarEliminarProyectos() {
+	public vistaModificarEliminarProyectos(){
 		setTitle("Modificar / Eliminar Proyecto");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 907, 345);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

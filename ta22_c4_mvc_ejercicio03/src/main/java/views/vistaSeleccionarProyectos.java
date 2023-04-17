@@ -25,7 +25,6 @@ public class vistaSeleccionarProyectos extends JFrame {
 	private JButton btnCancelar;
 
 	public vistaSeleccionarProyectos() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 409, 381);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

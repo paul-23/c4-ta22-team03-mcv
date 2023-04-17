@@ -26,6 +26,7 @@ public class ModelBD {
 	private String direccion;
 	private int dni;
 	private Date fecha;
+	private String nombre_Proy;
 
 	/**
 	 * @return the id
@@ -39,6 +40,20 @@ public class ModelBD {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the nombre_Proy
+	 */
+	public String getNombre_Proy() {
+		return nombre_Proy;
+	}
+
+	/**
+	 * @param nombre_Proy the nombre_Proy to set
+	 */
+	public void setNombre_Proy(String nombre_Proy) {
+		this.nombre_Proy = nombre_Proy;
 	}
 
 	/**
@@ -75,7 +90,7 @@ public class ModelBD {
 	public String getDireccion() {
 		return direccion;
 	}
-	
+
 	/**
 	 * @param direccion the direccion to set
 	 */
@@ -158,11 +173,12 @@ public class ModelBD {
 			Logger.getLogger(ModelBD.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+
 	public void consultarCinetificos(int idParametro) {
 
 		try {
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
-			String Query = "SELECT nombre,  dni from cliente WHERE id='" + idParametro + "';";
+			String Query = "SELECT nombre,  dni from cientificos WHERE dni='" + idParametro + "';";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			ResultSet registro = stdb.executeQuery(Query);
@@ -184,8 +200,7 @@ public class ModelBD {
 	public void modificarCientifico(int dni, String nombre) {
 		try {
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
-			String Query = "UPDATE cientifico SET nombre='" + nombre +
-				   "' WHERE DNI='"	+ dni + "';";
+			String Query = "UPDATE cientifico SET nombre='" + nombre + "' WHERE DNI='" + dni + "';";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);
@@ -196,10 +211,11 @@ public class ModelBD {
 			JOptionPane.showMessageDialog(null, "Error al actualizar cientifico");
 		}
 	}
+
 	public ResultSet consultarTodosCientificos() {
 		ResultSet registro = null;
 		try {
-			String Query = "SELECT id,  dni, fecha FROM cientificos;";
+			String Query = "SELECT  dni, nombre FROM cientificos;";
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
@@ -210,6 +226,7 @@ public class ModelBD {
 		}
 		return registro;
 	}
+
 	public String checkDNI(String table_name, int IDIntroducido) {
 		try {
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
@@ -237,10 +254,11 @@ public class ModelBD {
 		}
 		return "";
 	}
+
 	public void eliminarCientifico(int idParametro) {
 		try {
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
-			String Query = "DELETE FROM cliente WHERE id='" + idParametro + "';";
+			String Query = "DELETE FROM cliente WHERE dni='" + idParametro + "';";
 
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
@@ -252,18 +270,22 @@ public class ModelBD {
 			JOptionPane.showMessageDialog(null, "Error al eliminar cliente");
 		}
 	}
+
 	public void consultarcientificos(int idParametro) {
 
 		try {
-			String Query = "SELECT DNI, nombre, direccion, dni from cliente WHERE id='" + idParametro + "';";
+			String Query = "SELECT c.nombre, c.DNI, p.nombre" + "FROM cientificos c"
+					+ "JOIN asignado_a aa ON c.DNI = aa.cientifico"
+					+ "JOIN proyecto p ON aa.proyecto = p.id WHERE c.DNI = " + idParametro + ";";
+
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			ResultSet registro = stdb.executeQuery(Query);
-
 			if (registro.next() == true) {
-				nombre = (registro.getString("nombre"));
-				dni = (registro.getInt("dni"));
+				nombre = (registro.getString("c.nombre"));
+				nombre_Proy = (registro.getString("p.nombre"));
+				dni = (registro.getInt("c.DNI"));
 			} else {
 				System.out.println("No existe ningún cientifico con ese dni.");
 			}
@@ -273,7 +295,9 @@ public class ModelBD {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null, "Error al obtener cientifico");
 		}
+
 	}
+
 	public void createTable(String db, String query) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos crear la tabla" + "\n-------------------------------------------------------------");
@@ -308,6 +332,6 @@ public class ModelBD {
 
 	public void modificarCientifico(int iDSeleccionado, String text, String text2, String string) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

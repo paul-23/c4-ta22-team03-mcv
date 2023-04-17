@@ -20,12 +20,11 @@ public class vistaAñadirProy extends JFrame {
 	public JButton btnCancelar;
 	public JPanel contentPane;
 	public static JTextField textFieldNombre;
-
-	public static JTextField textField_2;
+	public static JTextField textFieldHoras;
+	public static JTextField textFieldID;
 
 	public vistaAñadirProy() {
 		setTitle("Añadir Proyectos");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 907, 345);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,11 +50,11 @@ public class vistaAñadirProy extends JFrame {
 		contentPane.add(lblNewLabel_2_1_1);
 
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Arial", Font.PLAIN, 20));
-		textField_2.setColumns(10);
-		textField_2.setBounds(705, 144, 176, 44);
-		contentPane.add(textField_2);
+		textFieldID = new JTextField();
+		textFieldID.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldID.setColumns(10);
+		textFieldID.setBounds(705, 144, 176, 44);
+		contentPane.add(textFieldID);
 		
 		JLabel lblNewLabelhors = new JLabel("Horas:");
 		lblNewLabelhors.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -63,11 +62,11 @@ public class vistaAñadirProy extends JFrame {
 		contentPane.add(lblNewLabelhors);
 		
 		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setFont(new Font("Arial", Font.PLAIN, 20));
-		textFieldNombre.setBounds(125, 144, 176, 44);
-		contentPane.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
+		textFieldHoras = new JTextField();
+		textFieldHoras.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldHoras.setBounds(125, 144, 176, 44);
+		contentPane.add(textFieldHoras);
+		textFieldHoras.setColumns(10);
 		
 		
 		 btnAñadir = new JButton("Añadir");

@@ -7,6 +7,7 @@ import java.awt.Font;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.time.LocalDate;
 
 import javax.swing.JLabel;
@@ -45,6 +46,8 @@ public class ControllerModificarEliminar implements ActionListener {
 		modelo.consultarcientificos(IDSeleccionado);
 		vistaModificarEliminar.textFieldNombre.setText(modelo.getNombre());
 		vistaModificarEliminar.textFieldDNI.setText(Integer.toString(modelo.getDni()));
+		vistaModificarEliminar.textFieldAsignado.setText(modelo.getNombre_Proy());
+		
 	}
 
 	public void cerrarVentanaVolver() {
@@ -52,7 +55,7 @@ public class ControllerModificarEliminar implements ActionListener {
 		ControllerSeleccionar cs = new ControllerSeleccionar(modelo);
 		cs.iniciar();
 	}
-	
+
 	public void cerrarVentanaVolverInicio() {
 		vistaModificarEliminar.setVisible(false);
 		ControladorInicio ci = new ControladorInicio(modelo, vp);
@@ -65,14 +68,13 @@ public class ControllerModificarEliminar implements ActionListener {
 		if (vistaModificarEliminar.btnModificar == e.getSource()) {
 
 			modelo.modificarCientifico(IDSeleccionado, vistaModificarEliminar.textFieldNombre.getText(),
-					 vistaModificarEliminar.textFieldDNI.getText(),
-					fecha.toString());
+					vistaModificarEliminar.textFieldDNI.getText(), fecha.toString());
 			cerrarVentanaVolverInicio();
 
 		} else if (vistaModificarEliminar.btnEliminar == e.getSource()) {
 
-			JLabel label = new JLabel("<html><h1>¿Eliminar el cientifico " + modelo.getNombre() + " (DNI: " + IDSeleccionado
-					+ ")?</h1></html>");
+			JLabel label = new JLabel("<html><h1>¿Eliminar el cientifico " + modelo.getNombre() + " (DNI: "
+					+ IDSeleccionado + ")?</h1></html>");
 			label.setFont(new Font("Arial", Font.BOLD, 20)); // Cambiamos la fuente y tamaño del texto
 			int input = JOptionPane.showConfirmDialog(vistaModificarEliminar.contentPane, label, "Eliminar Cliente",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

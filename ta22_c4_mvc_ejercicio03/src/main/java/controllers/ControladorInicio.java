@@ -26,7 +26,7 @@ public class ControladorInicio implements ActionListener {
 
 	vistaAñadir vistaAñadir = new vistaAñadir();
 	ModelBD modelo;
-	//ModelBDProy modeloProy;
+	ModelBDProy modeloProy;
 
 	vistaPrincipal vista;
 
@@ -39,7 +39,7 @@ public class ControladorInicio implements ActionListener {
 		this.vista.btnConsultarCientifico.addActionListener(this);
 	}
 	
-	public ControladorInicio(ModelBDProy modelo2, vistaPrincipal vistaPrincipal) {
+	public ControladorInicio(ModelBDProy modelo, vistaPrincipal vistaPrincipal) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -52,6 +52,9 @@ public class ControladorInicio implements ActionListener {
 	public void iniciarBaseDatos() {
 		modelo.connect();
 		modelo.createDB("Ej3asignacioCientificosProyectos");
+		crearTablaCientificos();
+		cearTablaAsignado_a();
+		crearProyecto();
 	}
 
 	public void crearTablaCientificos() {

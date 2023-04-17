@@ -12,32 +12,34 @@ import views.vistaSeleccionarProyectos;
  */
 public class ControllerSeleccionarProyectos implements ActionListener {
 
-	vistaSeleccionarProyectos vistaSeleccionar = new vistaSeleccionarProyectos();
-	ModelBDProy modelo;
+	vistaSeleccionarProyectos vistaSeleccionarProyectos = new vistaSeleccionarProyectos();
+	ModelBDProy modelo  = new ModelBDProy();
 
 	public ControllerSeleccionarProyectos(ModelBDProy modelo) {
 		this.modelo = modelo;
-		this.vistaSeleccionar.textFieldIDProyectos.addActionListener(this);
-		this.vistaSeleccionar.btnBuscar.addActionListener(this);
+		this.vistaSeleccionarProyectos.textFieldIDProyectos.addActionListener(this);
+		this.vistaSeleccionarProyectos.btnBuscar.addActionListener(this);
 	}
+
 	
+
 	public void iniciar() {
-		vistaSeleccionar.setVisible(true);
+		vistaSeleccionarProyectos.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (vistaSeleccionar.textFieldIDProyectos == e.getSource() || vistaSeleccionar.btnBuscar == e.getSource()) {
-			if (!"".equals(vistaSeleccionar.textFieldIDProyectos.getText())) {
-				if (vistaSeleccionar.textFieldIDProyectos.getText().equals(modelo.checkID("Proyectos", Integer.parseInt(vistaSeleccionarProyectos.textFieldIDProyectos.getText())))) {
+		if (vistaSeleccionarProyectos.textFieldIDProyectos == e.getSource() || vistaSeleccionarProyectos.btnBuscar == e.getSource()) {
+			if (!"".equals(vistaSeleccionarProyectos.textFieldIDProyectos.getText())) {
+				if (vistaSeleccionarProyectos.textFieldIDProyectos.getText().equals(modelo.checkID("Proyectos", Integer.parseInt(vistaSeleccionarProyectos.textFieldIDProyectos.getText())))) {
 					ControllerModificarEliminarProyectos me = new ControllerModificarEliminarProyectos(modelo, Integer.parseInt(vistaSeleccionarProyectos.textFieldIDProyectos.getText()));
 					me.iniciar();
-					vistaSeleccionar.setVisible(false);
+					vistaSeleccionarProyectos.setVisible(false);
 				} else {
-					JOptionPane.showMessageDialog(vistaSeleccionar.getContentPane(), "El Proyecto seleccionado no existe");
+					JOptionPane.showMessageDialog(vistaSeleccionarProyectos.getContentPane(), "El Proyecto seleccionado no existe");
 				}
 			} else {
-				JOptionPane.showMessageDialog(vistaSeleccionar.getContentPane(), "No has introducido ningun DNI");
+				JOptionPane.showMessageDialog(vistaSeleccionarProyectos.getContentPane(), "No has introducido ningun ID");
 			}
 		} 
 			

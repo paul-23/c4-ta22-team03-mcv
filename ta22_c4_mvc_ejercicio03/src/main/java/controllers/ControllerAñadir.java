@@ -39,9 +39,10 @@ public class ControllerAñadir implements ActionListener {
 			System.out.println("btnañadir");
 			modelo.insertData(vistaAñadir.textFieldNombre.getText(), vistaAñadir.textField_2.getText());
 			vistaAñadir.setVisible(false);
-			ControladorInicioProyectos ci = new ControladorInicioProyectos(modelo, vistaPrincipal);
+			ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
 			ci.iniciarVista();
-			ci.mostrarProyecto();
+			ci.mostrarCientifico();
+		//ci.mostrarProyecto();
 		} else if (vistaAñadir.btnCancelar == e.getSource()) {
 			vistaAñadir.setVisible(false);
 			ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);

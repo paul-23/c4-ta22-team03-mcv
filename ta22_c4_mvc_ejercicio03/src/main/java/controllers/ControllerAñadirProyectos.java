@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import models.ModelBDProy;
 import views.vistaAñadirProy;
 import views.vistaPrincipal;
+import views.vistaPrincipalProyectos;
 
 /**
  * @author Team 03 (Alejandro, Arnau y Paul)
@@ -17,34 +18,37 @@ import views.vistaPrincipal;
  */
 public class ControllerAñadirProyectos implements ActionListener {
 	
-	LocalDate fecha = LocalDate.now();
 	
 	vistaAñadirProy vistaAñadir = new vistaAñadirProy();
-	vistaPrincipal vistaPrincipal = new vistaPrincipal();
-	ModelBDProy modelo;
+	vistaPrincipalProyectos vistaPrincipalProy = new vistaPrincipalProyectos();
+	vistaAñadirProy vistaAñadirProy = new vistaAñadirProy();
+	ModelBDProy modelo = new ModelBDProy();
 	
-	public ControllerAñadirProyectos () {
+	public ControllerAñadirProyectos (ModelBDProy modelo) {
 		this.modelo = modelo;
-		this.vistaAñadir.btnAñadir.addActionListener(this);
-		this.vistaAñadir.btnCancelar.addActionListener(this);
+		this.vistaAñadirProy.btnAñadir.addActionListener(this);
+		this.vistaAñadirProy.btnCancelar.addActionListener(this);
 	}
 	
 	public void iniciar() {
-		vistaAñadir.setVisible(true);
+		vistaAñadirProy.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (vistaAñadir.btnAñadir == e.getSource()) {
+		String nombre = vistaAñadirProy.textFieldNombre.getText();
+		int id =  Integer.parseInt(vistaAñadirProy.textFieldID.getText());
+		int horas = Integer.parseInt(vistaAñadirProy.textFieldHoras.getText());
+		if (vistaAñadirProy.btnAñadir == e.getSource()) {
 			System.out.println("btnañadir");
-			modelo.insertData(vistaAñadirProy.textFieldNombre.getText(), vistaAñadirProy.textField_2.getText());
-			vistaAñadir.setVisible(false);
-			ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
+			modelo.insertData(nombre, id,horas);
+			vistaAñadirProy.setVisible(false);
+			ControladorInicioProyectos ci = new ControladorInicioProyectos(modelo, vistaPrincipalProy);
 			ci.iniciarVista();
 			ci.mostrarProyecto();
-		} else if (vistaAñadir.btnCancelar == e.getSource()) {
-			vistaAñadir.setVisible(false);
-			ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
+		} else if (vistaAñadirProy.btnCancelar == e.getSource()) {
+			vistaAñadirProy.setVisible(false);
+			ControladorInicioProyectos ci = new ControladorInicioProyectos(modelo, vistaPrincipalProy);
 			ci.iniciarVista();
 			ci.mostrarProyecto();
 		}

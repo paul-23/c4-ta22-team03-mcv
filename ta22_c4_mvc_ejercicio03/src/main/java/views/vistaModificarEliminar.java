@@ -25,10 +25,11 @@ public class vistaModificarEliminar extends JFrame {
 	public JButton btnModificar;
 	public JButton btnCancelar;
 	public JButton btnEliminar;
+	private JLabel lblAsignadoa;
+	public JTextField textFieldAsignado;
 	
 	public vistaModificarEliminar() {
 		setTitle("Modificar / Eliminar Cientifico");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 907, 345);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -78,6 +79,17 @@ public class vistaModificarEliminar extends JFrame {
 		btnModificar.setFont(new Font("Arial", Font.PLAIN, 20));
 		btnModificar.setBounds(250, 228, 142, 44);
 		contentPane.add(btnModificar);
+		
+		lblAsignadoa = new JLabel("Asignado_a:");
+		lblAsignadoa.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblAsignadoa.setBounds(28, 180, 122, 44);
+		contentPane.add(lblAsignadoa);
+		
+		textFieldAsignado = new JTextField();
+		textFieldAsignado.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldAsignado.setColumns(10);
+		textFieldAsignado.setBounds(160, 180, 176, 44);
+		contentPane.add(textFieldAsignado);
 	}
 
 }

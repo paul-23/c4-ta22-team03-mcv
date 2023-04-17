@@ -22,9 +22,9 @@ import views.vistaSeleccionarProyectos;
 
 public class ControladorInicioProyectos implements ActionListener {
 
-	vistaAñadirProy vistaAñadir = new vistaAñadirProy();
-	ModelBDProy modelo;
-	vistaPrincipalProyectos vista;
+	vistaAñadirProy vistaAñadirProy = new vistaAñadirProy();
+	ModelBDProy modelo = new ModelBDProy();
+	vistaPrincipalProyectos vista = new vistaPrincipalProyectos();
 
 	public ControladorInicioProyectos(ModelBDProy modelo, vistaPrincipalProyectos vista) {
 		this.modelo = modelo;
@@ -48,7 +48,7 @@ public class ControladorInicioProyectos implements ActionListener {
 
 	public void mostrarProyecto() {
 		ResultSet registro = modelo.consultarTodosProyectos();
-		String[] columnNames = { "Nombre", "DNI" };
+		String[] columnNames = { "Nombre", "ID","Horas" };
 		DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
 		try {
 
@@ -75,9 +75,9 @@ public class ControladorInicioProyectos implements ActionListener {
 
 
 	public void cearTablaAsignado_a() {
-		String tabla = "CREATE TABLE ASIGNADO_A (" + "Proyecto varcahr(8) NOT NULL," + "proyecto char(4),"
-				+ "FOREIGN KEY (Proyecto) references ProyectoS (dni)"
-				+ "FOREIGN KEY (PROYECTO) references PROYECTO(DNI);";
+		String tabla = "CREATE TABLE ASIGNADO_A (" + " cientifico varchar(8) NOT NULL," + "Proyecto char(4),"
+				+ "FOREIGN KEY (Proyecto) references Proyecto (id)"
+				+ "FOREIGN KEY (CIENTIFICO) references CIENTIFICO(DNI);";
 		modelo.createTable("ASIGNADO_A", tabla);
 
 	}
@@ -93,11 +93,10 @@ public class ControladorInicioProyectos implements ActionListener {
 		modelo.closeConnection();
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (vista.btnAñadirProyecto == e.getSource()) {
 			vista.setVisible(false);
-			vistaAñadir.setVisible(true);
+			vistaAñadirProy.setVisible(true);
 		} else if (vista.btnConsultarProyecto == e.getSource() || vista.btnEliminarProyecto == e.getSource()
 				|| vista.btnModificarProyecto == e.getSource()) {
 			vista.setVisible(false);

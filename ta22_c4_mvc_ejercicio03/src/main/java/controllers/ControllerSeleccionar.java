@@ -39,8 +39,10 @@ public class ControllerSeleccionar implements ActionListener {
 				}
 			} else {
 				JOptionPane.showMessageDialog(vistaSeleccionar.getContentPane(), "No has introducido ningun DNI");
-			}
-		} 
+			} 
+		} else if(vistaSeleccionar.btnCancelar == e.getSource()){
+			this.vistaSeleccionar.setVisible(false);
+		}
 			
 		}
 	}
