@@ -19,13 +19,14 @@ import javax.swing.JOptionPane;
 
 public class ModelBD {
 
-	Connection connection;
+	private Connection connection;
 	private int id;
 	private String nombre;
 	private String apellido;
 	private String direccion;
 	private int dni;
 	private Date fecha;
+	private String nombre_Proy;
 
 	/**
 	 * @return the id
@@ -39,6 +40,20 @@ public class ModelBD {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the nombre_Proy
+	 */
+	public String getNombre_Proy() {
+		return nombre_Proy;
+	}
+
+	/**
+	 * @param nombre_Proy the nombre_Proy to set
+	 */
+	public void setNombre_Proy(String nombre_Proy) {
+		this.nombre_Proy = nombre_Proy;
 	}
 
 	/**
@@ -75,7 +90,7 @@ public class ModelBD {
 	public String getDireccion() {
 		return direccion;
 	}
-	
+
 	/**
 	 * @param direccion the direccion to set
 	 */
@@ -159,13 +174,66 @@ public class ModelBD {
 		}
 	}
 
-	public String checkID(String table_name, int IDIntroducido) {
+	public void consultarCinetificos(int idParametro) {
+
 		try {
-			String Querydb = "USE CLIENTES;";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			String Query = "SELECT nombre,  dni from cientificos WHERE dni='" + idParametro + "';";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			ResultSet registro = stdb.executeQuery(Query);
+
+			if (registro.next() == true) {
+				nombre = (registro.getString("nombre"));
+				dni = (registro.getInt("dni"));
+			} else {
+				System.out.println("No existe ningún cliente con ese id.");
+			}
+
+			System.out.println("Datos obtenidos correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener cliente");
+		}
+	}
+
+	public void modificarCientifico(int dni, String nombre) {
+		try {
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			String Query = "UPDATE cientifico SET nombre='" + nombre + "' WHERE DNI='" + dni + "';";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			stdb.executeUpdate(Query);
+
+			JOptionPane.showMessageDialog(null, "Cientifico actualizado correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al actualizar cientifico");
+		}
+	}
+
+	public ResultSet consultarTodosCientificos() {
+		ResultSet registro = null;
+		try {
+			String Query = "SELECT  dni, nombre FROM cientificos;";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			registro = stdb.executeQuery(Query);
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener cientificos");
+		}
+		return registro;
+	}
+
+	public String checkDNI(String table_name, int IDIntroducido) {
+		try {
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(Querydb);
 
-			String query = "SELECT ID FROM " + table_name;
+			String query = "SELECT DNI FROM " + table_name;
 			Statement st = connection.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			ResultSetMetaData rsmd = rs.getMetaData();
@@ -187,11 +255,54 @@ public class ModelBD {
 		return "";
 	}
 
+	public void eliminarCientifico(int idParametro) {
+		try {
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			String Query = "DELETE FROM cliente WHERE dni='" + idParametro + "';";
+
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			stdb.executeUpdate(Query);
+
+			JOptionPane.showMessageDialog(null, "Cliente eliminado correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al eliminar cliente");
+		}
+	}
+
+	public void consultarcientificos(int idParametro) {
+
+		try {
+			String Query = "SELECT c.nombre, c.DNI, p.nombre" + "FROM cientificos c"
+					+ "JOIN asignado_a aa ON c.DNI = aa.cientifico"
+					+ "JOIN proyecto p ON aa.proyecto = p.id WHERE c.DNI = " + idParametro + ";";
+
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			ResultSet registro = stdb.executeQuery(Query);
+			if (registro.next() == true) {
+				nombre = (registro.getString("c.nombre"));
+				nombre_Proy = (registro.getString("p.nombre"));
+				dni = (registro.getInt("c.DNI"));
+			} else {
+				System.out.println("No existe ningún cientifico con ese dni.");
+			}
+
+			System.out.println("Datos obtenidos correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener cientifico");
+		}
+
+	}
+
 	public void createTable(String db, String query) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos crear la tabla" + "\n-------------------------------------------------------------");
 		try {
-			String Querydb = "USE " + db + ";";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(query);
@@ -203,12 +314,14 @@ public class ModelBD {
 	}
 
 	// METODO QUE INSERTA DATOS EN TABLAS MYSQL
-	public void insertData(String db, String Query) {
+	public void insertData(String nombre, int dni) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos insertar datos en la tabla"
 				+ "\n-------------------------------------------------------------");
+		connect();
 		try {
-			String Querydb = "USE " + db + ";";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+		String	 Query = "INSERT INTO cientificos (nombre,dni) values(\""+nombre+"\","+dni+")";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);
@@ -217,5 +330,10 @@ public class ModelBD {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null, "Error en el aleacenamiento");
 		}
+	}
+
+	public void modificarCientifico(int iDSeleccionado, String text, String text2, String string) {
+		// TODO Auto-generated method stub
+
 	}
 }

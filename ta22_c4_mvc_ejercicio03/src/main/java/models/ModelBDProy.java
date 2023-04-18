@@ -1,4 +1,4 @@
-package team03.ta22_c4_mvc_ejercicio01.models;
+package models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,15 +9,15 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.swing.JOptionPane;
 
 /**
+ * 
  * @author Team 03 (Alejandro, Arnau y Paul)
  *
  */
 
-public class ModeloCliente {
+public class ModelBDProy {
 
 	Connection connection;
 	private int id;
@@ -26,6 +26,7 @@ public class ModeloCliente {
 	private String direccion;
 	private int dni;
 	private Date fecha;
+	private int horas;
 
 	/**
 	 * @return the id
@@ -75,7 +76,7 @@ public class ModeloCliente {
 	public String getDireccion() {
 		return direccion;
 	}
-
+	
 	/**
 	 * @param direccion the direccion to set
 	 */
@@ -125,8 +126,8 @@ public class ModeloCliente {
 	public void connect() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://192.168.1.43", "remote",
-					"-Crocodile123");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost?useTimezone=true&server=UTC", "root",
+					"root");
 			System.out.println("Connected!");
 		} catch (SQLException | ClassNotFoundException ex) {
 			System.out.println("Cannot connect to DB");
@@ -139,7 +140,7 @@ public class ModeloCliente {
 			connection.close();
 			JOptionPane.showMessageDialog(null, "Se ha finalizado la conexión con el servidor");
 		} catch (SQLException ex) {
-			Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ModelBD.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 
@@ -153,15 +154,52 @@ public class ModeloCliente {
 			Statement st = connection.createStatement();
 			st.executeUpdate(QueryDrop);
 			st.executeUpdate(Query);
-			System.out.println("Se ha creado la base de datos " + name + " de forma exitosa");
+			JOptionPane.showMessageDialog(null, "Se ha creado la base de datos " + name + " de forma exito");
 		} catch (SQLException ex) {
-			Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ModelBD.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+	public void consultarProyectos(int idParametro) {
+
+		try {
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			String Query = "SELECT nombre,  dni from cliente WHERE id='" + idParametro + "';";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			ResultSet registro = stdb.executeQuery(Query);
+
+			if (registro.next() == true) {
+				nombre = (registro.getString("nombre"));
+				dni = (registro.getInt("dni"));
+			} else {
+				System.out.println("No existe ningún cliente con ese id.");
+			}
+
+			System.out.println("Datos obtenidos correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener cliente");
 		}
 	}
 
+	
+	public ResultSet consultarTodosProyectos() {
+		ResultSet registro = null;
+		try {
+			String Query = "SELECT id,  nombre, horas FROM pryectos;";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			registro = stdb.executeQuery(Query);
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener proyectos");
+		}
+		return registro;
+	}
 	public String checkID(String table_name, int IDIntroducido) {
 		try {
-			String Querydb = "USE db;";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(Querydb);
 
@@ -186,12 +224,48 @@ public class ModeloCliente {
 		}
 		return "";
 	}
+	public void eliminarProyecto(int idParametro) {
+		try {
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			String Query = "DELETE FROM proyecto WHERE id='" + idParametro + "';";
 
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			stdb.executeUpdate(Query);
+
+			JOptionPane.showMessageDialog(null, "Proyecto eliminado correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al eliminar proyecto");
+		}
+	}
+	public void consultarproyectos(int idParametro) {
+
+		try {
+			String Query = "SELECT nombre, horas, id from proyecto WHERE id='" + idParametro + "';";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			ResultSet registro = stdb.executeQuery(Query);
+
+			if (registro.next() == true) {
+				nombre = (registro.getString("nombre"));
+				id = (registro.getInt("id"));
+				horas = (registro.getInt("horas"));
+			} else {
+				System.out.println("No existe ningún proyecto con ese id.");
+			}
+			System.out.println("Datos obtenidos correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al obtener proyecto");
+		}
+	}
 	public void createTable(String db, String query) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos crear la tabla" + "\n-------------------------------------------------------------");
 		try {
-			String Querydb = "USE " + db + ";";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(query);
@@ -202,100 +276,42 @@ public class ModeloCliente {
 		}
 	}
 
-	public ResultSet consultarTodosClientes() {
-		ResultSet registro = null;
-		try {
-			String Query = "SELECT id, nombre, apellido, direccion, dni, fecha FROM cliente;";
-			String Querydb = "USE db;";
-			Statement stdb = getConnection().createStatement();
-			stdb.executeUpdate(Querydb);
-			registro = stdb.executeQuery(Query);
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-			JOptionPane.showMessageDialog(null, "Error al obtener cliente");
-		}
-		return registro;
-	}
-
-	public void consultarCliente(int idParametro) {
-
-		try {
-			String Query = "SELECT nombre, apellido, direccion, dni from cliente WHERE id='" + idParametro + "';";
-			String Querydb = "USE db;";
-			Statement stdb = getConnection().createStatement();
-			stdb.executeUpdate(Querydb);
-			ResultSet registro = stdb.executeQuery(Query);
-
-			if (registro.next() == true) {
-				nombre = (registro.getString("nombre"));
-				apellido = (registro.getString("apellido"));
-				direccion = (registro.getString("direccion"));
-				dni = (registro.getInt("dni"));
-				nombre = (registro.getString("nombre"));
-			} else {
-				System.out.println("No existe ningún cliente con ese id.");
-			}
-
-			System.out.println("Datos obtenidos correctamente");
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-			JOptionPane.showMessageDialog(null, "Error al obtener cliente");
-		}
-	}
-
-	public void eliminarCliente(int idParametro) {
-		try {
-			String Querydb = "USE db;";
-			String Query = "DELETE FROM cliente WHERE id='" + idParametro + "';";
-
-			Statement stdb = getConnection().createStatement();
-			stdb.executeUpdate(Querydb);
-			stdb.executeUpdate(Query);
-
-			JOptionPane.showMessageDialog(null, "Cliente eliminado correctamente");
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-			JOptionPane.showMessageDialog(null, "Error al eliminar cliente");
-		}
-	}
-
-	public void modificarCliente(int idParametro, String nombre, String apellido, String direccion, String dni,
-			String fecha) {
-		try {
-			String Querydb = "USE db;";
-			String Query = "UPDATE cliente SET nombre='" + nombre + "', apellido='"+ apellido
-					+ "', direccion='" + direccion + "', fecha='" + fecha + "' WHERE id='"
-					+ idParametro + "';";
-
-			Statement stdb = getConnection().createStatement();
-			stdb.executeUpdate(Querydb);
-			stdb.executeUpdate(Query);
-
-			JOptionPane.showMessageDialog(null, "Cliente actualizado correctamente");
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-			JOptionPane.showMessageDialog(null, "Error al actualizar cliente");
-		}
-	}
-
 	// METODO QUE INSERTA DATOS EN TABLAS MYSQL
-	public void insertData(String nombre, String apellido, String direccion, String dni, String fecha) {
+	public void insertData(String nombre, int id,int horas) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos insertar datos en la tabla"
 				+ "\n-------------------------------------------------------------");
 		try {
-			String Query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) VALUE (" + "\"" + nombre
-					+ "\", \"" + apellido + "\", \"" + direccion + "\", '" + dni + "', '" + fecha
-					+ "');";
-			String Querydb = "USE db;";
+			connect();
+			String Query = "INSERT INTO proyecto (nombre,  id, horas) VALUE (" + "\"" + nombre+	"\", '" + id + "', '" + horas+ "');";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);
 			System.out.println("Datos almacenados correctamente");
-			JOptionPane.showMessageDialog(null, "Datos almacenados correctamente");
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null, "Error en el aleacenamiento");
 		}
 	}
+
+
+	public void modificarProyecto(int id, String nombre, int horas) {
+		// TODO Auto-generated method stub
+		try {
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+			String Query = "UPDATE proyectos SET nombre='" + nombre +"''SET horas=" +horas+
+				   "' WHERE ID='"	+ id + "';";
+			Statement stdb = getConnection().createStatement();
+			stdb.executeUpdate(Querydb);
+			stdb.executeUpdate(Query);
+
+			JOptionPane.showMessageDialog(null, "Proyecto actualizado correctamente");
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+			JOptionPane.showMessageDialog(null, "Error al actualizar proyecto");
+		}		
+	}
+
+
 }
