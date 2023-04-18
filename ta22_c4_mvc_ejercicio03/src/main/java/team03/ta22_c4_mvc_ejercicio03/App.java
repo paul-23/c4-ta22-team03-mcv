@@ -6,7 +6,7 @@ import controllers.ControllerSelTabla;
 import models.ModelBD;
 import models.ModelBDProy;
 import views.vistaAñadir;
-import views.vistaModificarEliminar;
+import views.vistaME;
 import views.vistaPrincipal;
 import views.vistaPrincipalProyectos;
 import views.vistaSeleccionTabla;

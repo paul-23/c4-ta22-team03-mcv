@@ -14,18 +14,28 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import models.ModelBD;
+<<<<<<< HEAD
+import views.vistaME;
+=======
 import views.vistaModificarEliminar;
 import views.vistaPrincipal;
+>>>>>>> branch 'master' of https://github.com/paul-23/c4-ta22-team03-mcv
 
 /**
  * @author Team 03 (Alejandro, Arnau y Paul)
  *
  */
+<<<<<<< HEAD
+public class ControllerModificarEliminar {
+	
+	vistaME vistaModificarEliminar = new vistaME();
+=======
 public class ControllerModificarEliminar implements ActionListener {
 
 	LocalDate fecha = LocalDate.now();
 	vistaModificarEliminar vistaModificarEliminar = new vistaModificarEliminar();
 	vistaPrincipal vp = new vistaPrincipal();
+>>>>>>> branch 'master' of https://github.com/paul-23/c4-ta22-team03-mcv
 	ModelBD modelo;
 	private int IDSeleccionado;
 

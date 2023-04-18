@@ -1,4 +1,4 @@
-package team03.ta22_c4_mvc_ejercicio01.models;
+package models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  */
 
-public class ModeloCliente {
+public class Videos {
 
 	Connection connection;
 	private int id;
@@ -125,8 +125,8 @@ public class ModeloCliente {
 	public void connect() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost?useTimezone=true&server=UTC", "root",
-					"root");
+			connection = DriverManager.getConnection("jdbc:mysql://192.168.1.43", "remote",
+					"-Crocodile123");
 			System.out.println("Connected!");
 		} catch (SQLException | ClassNotFoundException ex) {
 			System.out.println("Cannot connect to DB");
@@ -139,7 +139,7 @@ public class ModeloCliente {
 			connection.close();
 			JOptionPane.showMessageDialog(null, "Se ha finalizado la conexión con el servidor");
 		} catch (SQLException ex) {
-			Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ModeloVideo.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 
@@ -184,7 +184,6 @@ public class ModeloCliente {
 			System.out.println("Error en la adquisicion de datos");
 
 		}
-		
 		return "";
 	}
 
@@ -286,7 +285,7 @@ public class ModeloCliente {
 				+ "\n-------------------------------------------------------------");
 		try {
 			String Query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) VALUE (" + "\"" + nombre
-					+ "\", \"" + apellido + "\", \"" + direccion + "\", '" + dni + "', '" + fecha
+					+ "\", \"" + apellido + "\", \"" + direccion + "\", '" + Integer.parseInt(dni) + "', '" + fecha
 					+ "');";
 			String Querydb = "USE CLIENTES;";
 			Statement stdb = getConnection().createStatement();

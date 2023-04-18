@@ -46,6 +46,7 @@ public class ControladorInicio implements ActionListener {
 	}
 
 	public void crearTablaClientes() {
+		
 		String tabla = "CREATE TABLE cliente (" + "id int NOT NULL AUTO_INCREMENT,"
 				+ "nombre varchar(250) DEFAULT NULL," + "apellido varchar(250) DEFAULT NULL,"
 				+ "direccion varchar(250) DEFAULT NULL," + "dni int DEFAULT NULL," + "fecha date DEFAULT NULL,"
