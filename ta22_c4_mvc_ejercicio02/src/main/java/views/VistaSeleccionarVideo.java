@@ -1,6 +1,5 @@
 package views;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -15,48 +14,49 @@ import javax.swing.JButton;
  *
  */
 
-public class vistaSeleccionar extends JFrame {
+public class VistaSeleccionarVideo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
-	public JTextField textFieldIDCientifico;
-	public JButton btnBuscar;
-	public JButton btnCancelar;
+	public JTextField textFieldIDCliente;
+	public JButton btnBuscar, btnCancelar;
 
-	public vistaSeleccionar() {
-		setBounds(100, 100, 409, 381);
+	public VistaSeleccionarVideo() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 409, 310);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Selecciona un Cientifico");
+		JLabel lblNewLabel = new JLabel("Selecciona un cliente");
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(70, 42, 255, 57);
+		lblNewLabel.setBounds(70, 26, 255, 57);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("ID Cientifico");
+		JLabel lblNewLabel_1 = new JLabel("ID Cliente");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblNewLabel_1.setBounds(10, 156, 132, 29);
+		lblNewLabel_1.setBounds(38, 119, 104, 29);
 		contentPane.add(lblNewLabel_1);
 		
-		textFieldIDCientifico = new JTextField();
-		textFieldIDCientifico.setFont(new Font("Arial", Font.PLAIN, 20));
-		textFieldIDCientifico.setBounds(164, 147, 197, 46);
-		contentPane.add(textFieldIDCientifico);
-		textFieldIDCientifico.setColumns(10);
+		textFieldIDCliente = new JTextField();
+		textFieldIDCliente.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldIDCliente.setBounds(164, 110, 197, 46);
+		contentPane.add(textFieldIDCliente);
+		textFieldIDCliente.setColumns(10);
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnBuscar.setBounds(38, 249, 150, 46);
+		btnBuscar.setBounds(30, 194, 150, 46);
 		contentPane.add(btnBuscar);
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnCancelar.setBounds(211, 249, 150, 46);
+		btnCancelar.setBounds(211, 194, 150, 46);
 		contentPane.add(btnCancelar);
 	}
 }
+

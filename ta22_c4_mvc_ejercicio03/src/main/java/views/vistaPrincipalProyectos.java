@@ -14,21 +14,21 @@ import javax.swing.JButton;
  *
  */
 
-public class vistaPrincipal extends JFrame {
+public class vistaPrincipalProyectos extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel contentPane;
-	public JButton btnAñadirCientifico;
-	public JButton btnModificarCientifico; 
-	public JButton btnEliminarCientifico;
-	public JButton btnConsultarCientifico;
-public JTable table;
+	public JButton btnAñadirProyecto;
+	public JButton btnModificarProyecto; 
+	public JButton btnEliminarProyecto;
+	public JButton btnConsultarProyecto;
+	public JTable table;
 
 	/**
 	 * Create the frame.
 	 */
-	public vistaPrincipal() {
+	public vistaPrincipalProyectos() {
 		setResizable(false);
 		setBounds(100, 100, 433, 364);
 		contentPane = new JPanel();
@@ -43,26 +43,25 @@ public JTable table;
 		lblNewLabel.setBounds(61, 36, 268, 52);
 		contentPane.add(lblNewLabel);
 		
-		btnAñadirCientifico = new JButton("Añadir Cientifico");
-		btnAñadirCientifico.setBounds(45, 138, 150, 46);
-		contentPane.add(btnAñadirCientifico);
+		btnAñadirProyecto = new JButton("Añadir Proyecto");
+		btnAñadirProyecto.setBounds(45, 138, 150, 46);
+		contentPane.add(btnAñadirProyecto);
 		
-		btnModificarCientifico = new JButton("Modificar Cientifico");
-		btnModificarCientifico.setBounds(207, 138, 150, 46);
-		contentPane.add(btnModificarCientifico);
+		btnModificarProyecto = new JButton("Modificar Proyecto");
+		btnModificarProyecto.setBounds(207, 138, 150, 46);
+		contentPane.add(btnModificarProyecto);
 		
-		btnEliminarCientifico = new JButton("Eliminar Cientifico");
-		btnEliminarCientifico.setBounds(45, 195, 150, 46);
-		contentPane.add(btnEliminarCientifico);
+		btnEliminarProyecto = new JButton("Eliminar Proyecto");
+		btnEliminarProyecto.setBounds(45, 195, 150, 46);
+		contentPane.add(btnEliminarProyecto);
 		
-		btnConsultarCientifico = new JButton("Consultar Cientifico");
-		btnConsultarCientifico.setBounds(207, 195, 150, 46);
-		contentPane.add(btnConsultarCientifico);
+		btnConsultarProyecto = new JButton("Consultar Proyecto");
+		btnConsultarProyecto.setBounds(207, 195, 150, 46);
+		contentPane.add(btnConsultarProyecto);
 		
 		table = new JTable();
 		table.setEnabled(false);
 		table.setBounds(41, 190, 870, 486);
 		contentPane.add(table);
 	}
-	}
-
+}
