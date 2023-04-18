@@ -161,7 +161,7 @@ public class ModeloCliente {
 
 	public String checkID(String table_name, int IDIntroducido) {
 		try {
-			String Querydb = "USE CLIENTES;";
+			String Querydb = "USE db;";
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(Querydb);
 
@@ -206,7 +206,7 @@ public class ModeloCliente {
 		ResultSet registro = null;
 		try {
 			String Query = "SELECT id, nombre, apellido, direccion, dni, fecha FROM cliente;";
-			String Querydb = "USE CLIENTES;";
+			String Querydb = "USE db;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			registro = stdb.executeQuery(Query);
@@ -221,7 +221,7 @@ public class ModeloCliente {
 
 		try {
 			String Query = "SELECT nombre, apellido, direccion, dni from cliente WHERE id='" + idParametro + "';";
-			String Querydb = "USE CLIENTES;";
+			String Querydb = "USE db;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			ResultSet registro = stdb.executeQuery(Query);
@@ -245,7 +245,7 @@ public class ModeloCliente {
 
 	public void eliminarCliente(int idParametro) {
 		try {
-			String Querydb = "USE CLIENTES;";
+			String Querydb = "USE db;";
 			String Query = "DELETE FROM cliente WHERE id='" + idParametro + "';";
 
 			Statement stdb = getConnection().createStatement();
@@ -262,7 +262,7 @@ public class ModeloCliente {
 	public void modificarCliente(int idParametro, String nombre, String apellido, String direccion, String dni,
 			String fecha) {
 		try {
-			String Querydb = "USE CLIENTES;";
+			String Querydb = "USE db;";
 			String Query = "UPDATE cliente SET nombre='" + nombre + "', apellido='"+ apellido
 					+ "', direccion='" + direccion + "', fecha='" + fecha + "' WHERE id='"
 					+ idParametro + "';";
@@ -287,7 +287,7 @@ public class ModeloCliente {
 			String Query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) VALUE (" + "\"" + nombre
 					+ "\", \"" + apellido + "\", \"" + direccion + "\", '" + Integer.parseInt(dni) + "', '" + fecha
 					+ "');";
-			String Querydb = "USE CLIENTES;";
+			String Querydb = "USE db;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);

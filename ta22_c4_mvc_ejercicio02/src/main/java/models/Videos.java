@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  */
 
-public class ModeloVideos {
+public class Videos {
 
 	Connection connection;
 	private int id;
