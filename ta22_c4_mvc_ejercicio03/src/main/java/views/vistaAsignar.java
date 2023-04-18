@@ -5,19 +5,23 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 public class vistaAsignar extends JFrame {
 
 	private JPanel contentPane;
-	public JButton btnCancelar;
-	public JButton btnModificar;
-	public JButton btnEliminar;
+	public JButton btnAñadirAsignacion;
+	public JButton btnConsultarAsignacion;
+	public JButton btnModificarCientifico;
+	public JButton btnEliminarAsignacion;
+	public JTable table;
 
 	/**
 	 * Launch the application.
@@ -34,21 +38,39 @@ public class vistaAsignar extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setResizable(false);
+		setBounds(100, 100, 433, 364);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnEliminar.setBounds(228, 243, 142, 44);
-		contentPane.add(btnEliminar);
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Escoje una opción");
+		lblNewLabel.setFont(new Font("Arial Black", Font.BOLD, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(61, 36, 268, 52);
+		contentPane.add(lblNewLabel);
+		
+		btnAñadirAsignacion = new JButton("Añadir Asignación");
+		btnAñadirAsignacion.setBounds(45, 138, 150, 46);
+		contentPane.add(btnAñadirAsignacion);
+		
+		btnModificarCientifico = new JButton("Modificar Asignación");
+		btnModificarCientifico.setBounds(207, 138, 150, 46);
+		contentPane.add(btnModificarCientifico);
+		
+		btnEliminarAsignacion = new JButton("Eliminar Asignación");
+		btnEliminarAsignacion.setBounds(45, 195, 150, 46);
+		contentPane.add(btnEliminarAsignacion);
+		
+		btnConsultarAsignacion = new JButton("Consultar Asignación");
+		btnConsultarAsignacion.setBounds(207, 195, 150, 46);
+		contentPane.add(btnConsultarAsignacion);
+		
+		table = new JTable();
+		table.setEnabled(false);
+		table.setBounds(41, 190, 870, 486);
+		contentPane.add(table);
 
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnCancelar.setBounds(455, 243, 142, 44);
-		contentPane.add(btnCancelar);
-
-		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnModificar.setBounds(32, 243, 142, 44);
-		contentPane.add(btnModificar);
-	}
-
-}
+}}

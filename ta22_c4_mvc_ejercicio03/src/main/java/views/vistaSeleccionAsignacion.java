@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 public class vistaSeleccionAsignacion extends JFrame {
 
 	private JPanel contentPane;
-	public JTextField textFieldIDAsignacion;
+	public static JTextField textFieldIDAsignacion;
 	public JButton btnBuscar;
 	public JButton btnCancelar;
 	/**
@@ -44,7 +44,7 @@ public class vistaSeleccionAsignacion extends JFrame {
 		lblNewLabel_1.setBounds(10, 156, 132, 29);
 		contentPane.add(lblNewLabel_1);
 		
-		 textFieldIDAsignacion = new JTextField();
+		textFieldIDAsignacion = new JTextField();
 		textFieldIDAsignacion.setFont(new Font("Arial", Font.PLAIN, 20));
 		textFieldIDAsignacion.setBounds(164, 147, 197, 46);
 		contentPane.add(textFieldIDAsignacion);
