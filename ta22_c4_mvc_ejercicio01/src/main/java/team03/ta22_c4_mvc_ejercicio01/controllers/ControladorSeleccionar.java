@@ -40,7 +40,9 @@ public class ControladorSeleccionar implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (vistaSeleccionar.textFieldIDCliente == e.getSource() || vistaSeleccionar.btnBuscar == e.getSource()) {
+			
 			if (!"".equals(vistaSeleccionar.textFieldIDCliente.getText())) {
+				
 				if (vistaSeleccionar.textFieldIDCliente.getText().equals(modelo.checkID("cliente", Integer.parseInt(vistaSeleccionar.textFieldIDCliente.getText())))) {
 					ControladorModificarEliminar me = new ControladorModificarEliminar(modelo, Integer.parseInt(vistaSeleccionar.textFieldIDCliente.getText()));
 					me.iniciar();
