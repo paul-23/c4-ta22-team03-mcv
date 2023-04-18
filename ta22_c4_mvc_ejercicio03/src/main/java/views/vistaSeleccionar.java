@@ -38,7 +38,7 @@ public class vistaSeleccionar extends JFrame {
 		lblNewLabel.setBounds(70, 42, 255, 57);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("ID Cientifico");
+		JLabel lblNewLabel_1 = new JLabel("DNI Cientifico;");
 		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 20));
 		lblNewLabel_1.setBounds(10, 156, 132, 29);
 		contentPane.add(lblNewLabel_1);

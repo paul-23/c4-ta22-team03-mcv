@@ -37,7 +37,7 @@ public class vistaAsignar extends JFrame {
 
 		JButton btnEliminar = new JButton("Eliminar");
 		btnEliminar.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnEliminar.setBounds(227, 223, 142, 44);
+		btnEliminar.setBounds(228, 243, 142, 44);
 		contentPane.add(btnEliminar);
 
 		JButton btnCancelar = new JButton("Cancelar");
@@ -47,7 +47,7 @@ public class vistaAsignar extends JFrame {
 
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setFont(new Font("Arial", Font.PLAIN, 20));
-		btnModificar.setBounds(10, 243, 142, 44);
+		btnModificar.setBounds(32, 243, 142, 44);
 		contentPane.add(btnModificar);
 	}
 

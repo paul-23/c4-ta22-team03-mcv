@@ -27,6 +27,35 @@ public class ModelBDProy {
 	private int dni;
 	private Date fecha;
 	private int horas;
+	private int IDSeleccionado;
+
+	/**
+	 * @return the horas
+	 */
+	public int getHoras() {
+		return horas;
+	}
+
+	/**
+	 * @return the iDSeleccionado
+	 */
+	public int getIDSeleccionado() {
+		return IDSeleccionado;
+	}
+
+	/**
+	 * @param horas the horas to set
+	 */
+	public void setHoras(int horas) {
+		this.horas = horas;
+	}
+
+	/**
+	 * @param iDSeleccionado the iDSeleccionado to set
+	 */
+	public void setIDSeleccionado(int iDSeleccionado) {
+		IDSeleccionado = iDSeleccionado;
+	}
 
 	/**
 	 * @return the id
@@ -76,7 +105,7 @@ public class ModelBDProy {
 	public String getDireccion() {
 		return direccion;
 	}
-	
+
 	/**
 	 * @param direccion the direccion to set
 	 */
@@ -159,18 +188,20 @@ public class ModelBDProy {
 			Logger.getLogger(ModelBD.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+
 	public void consultarProyectos(int idParametro) {
 
 		try {
+			connect();
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
-			String Query = "SELECT nombre,  dni from cliente WHERE id='" + idParametro + "';";
+			String Query = "SELECT nombre,  id, horas from proyecto WHERE id='" + idParametro + "';";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			ResultSet registro = stdb.executeQuery(Query);
 
 			if (registro.next() == true) {
 				nombre = (registro.getString("nombre"));
-				dni = (registro.getInt("dni"));
+				id = (registro.getInt("idParametro"));
 			} else {
 				System.out.println("No existe ningún cliente con ese id.");
 			}
@@ -178,15 +209,14 @@ public class ModelBDProy {
 			System.out.println("Datos obtenidos correctamente");
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
-			JOptionPane.showMessageDialog(null, "Error al obtener cliente");
+			JOptionPane.showMessageDialog(null, "Error al obtener proyecto");
 		}
 	}
 
-	
 	public ResultSet consultarTodosProyectos() {
 		ResultSet registro = null;
 		try {
-			String Query = "SELECT id,  nombre, horas FROM pryectos;";
+			String Query = "SELECT id,  nombre, horas FROM pryecto;";
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
@@ -197,8 +227,10 @@ public class ModelBDProy {
 		}
 		return registro;
 	}
+
 	public String checkID(String table_name, int IDIntroducido) {
 		try {
+			connect();
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(Querydb);
@@ -224,7 +256,9 @@ public class ModelBDProy {
 		}
 		return "";
 	}
+
 	public void eliminarProyecto(int idParametro) {
+		connect();
 		try {
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			String Query = "DELETE FROM proyecto WHERE id='" + idParametro + "';";
@@ -239,9 +273,11 @@ public class ModelBDProy {
 			JOptionPane.showMessageDialog(null, "Error al eliminar proyecto");
 		}
 	}
+
 	public void consultarproyectos(int idParametro) {
 
 		try {
+			connect();
 			String Query = "SELECT nombre, horas, id from proyecto WHERE id='" + idParametro + "';";
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
@@ -261,6 +297,7 @@ public class ModelBDProy {
 			JOptionPane.showMessageDialog(null, "Error al obtener proyecto");
 		}
 	}
+
 	public void createTable(String db, String query) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos crear la tabla" + "\n-------------------------------------------------------------");
@@ -277,13 +314,13 @@ public class ModelBDProy {
 	}
 
 	// METODO QUE INSERTA DATOS EN TABLAS MYSQL
-	public void insertData(String nombre, int id,int horas) {
+	public void insertData(String nombre, int id, int horas) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos insertar datos en la tabla"
 				+ "\n-------------------------------------------------------------");
 		try {
 			connect();
-			String Query = "INSERT INTO proyecto (nombre,  id, horas) VALUE (" + "\"" + nombre+	"\", '" + id + "', '" + horas+ "');";
+			String Query = "INSERT INTO proyecto (nombre,  id, horas) VALUE (" + "\"" + nombre + "\", '" + id + "', '"+ horas + "');";
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
@@ -291,27 +328,24 @@ public class ModelBDProy {
 			System.out.println("Datos almacenados correctamente");
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
-			JOptionPane.showMessageDialog(null, "Error en el aleacenamiento");
+			JOptionPane.showMessageDialog(null, "Error en el almacenamiento");
 		}
 	}
 
-
 	public void modificarProyecto(int id, String nombre, int horas) {
-		// TODO Auto-generated method stub
+		
 		try {
+
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
-			String Query = "UPDATE proyectos SET nombre='" + nombre +"''SET horas=" +horas+
-				   "' WHERE ID='"	+ id + "';";
+			String Query = "UPDATE Proyecto SET id = "+id+" , Nombre = \""+nombre+"\" , Horas = "+horas+" WHERE Id = "+id+ ";";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);
-
 			JOptionPane.showMessageDialog(null, "Proyecto actualizado correctamente");
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null, "Error al actualizar proyecto");
-		}		
+		}
 	}
-
 
 }

@@ -28,7 +28,7 @@ public class ControladorInicio implements ActionListener {
 	ModelBD modelo;
 //	ModelBDProy modeloProy;
 
-	vistaPrincipal vista;
+	vistaPrincipal vista = new vistaPrincipal();
 
 	public ControladorInicio(ModelBD modelo, vistaPrincipal vista) {
 		this.modelo = modelo;
@@ -44,7 +44,7 @@ public class ControladorInicio implements ActionListener {
 	}
 
 	public void iniciarVista() {
-		vista.setTitle("Asignacion de proyectos a cientificos");
+	//	vista.setTitle("Asignacion de proyectos a cientificos");
 		vista.setVisible(true);
 	}
 
