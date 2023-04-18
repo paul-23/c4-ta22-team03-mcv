@@ -213,8 +213,7 @@ public class ModelBD {
 	}
 
 	public void modificarCientifico(String nombre, int dni ) {
-		System.out.print(nombre);
-		System.out.print(dni);
+	
 		try {
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			String Query = "UPDATE cientificos SET nombre='" + nombre + "' WHERE DNI='" + dni + "';";

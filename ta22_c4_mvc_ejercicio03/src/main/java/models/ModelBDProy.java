@@ -333,9 +333,7 @@ public class ModelBDProy {
 	}
 
 	public void modificarProyecto(int id, String nombre, int horas) {
-		System.out.print(nombre);
-		System.out.print(horas);
-		System.out.print(id);
+		
 		try {
 
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
