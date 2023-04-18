@@ -45,20 +45,8 @@ public class ControladorInicio implements ActionListener {
 		mostrarClientes();
 	}
 
-	public void crearTablaVideos() {
-		String tabla = "CREATE TABLE video (" + "id int NOT NULL AUTO_INCREMENT,"
-				+ "nombre varchar(250) DEFAULT NULL," + "apellido varchar(250) DEFAULT NULL,"
-				+ "direccion varchar(250) DEFAULT NULL," + "dni int DEFAULT NULL," + "fecha date DEFAULT NULL,"
-				+ "PRIMARY KEY (id)" + ");";
-
-		modelo.createTable("CLIENTES", tabla);
-
-		modelo.insertData("Alejandro", "Jimenez", "Calle Mayor Nr,7 Reus", "123456789", "2023-04-11");
-		modelo.insertData("Arnau", "Leinster", "Calle Diagonal Nr,27 Tarragona", "456789456", "2023-04-11");
-		modelo.insertData("Paul", "Stanescu", "Calle Sant Joan Nr,10 Vinyols i els Arcs", "234561234", "2023-04-11");
-	}
-	
 	public void crearTablaClientes() {
+		
 		String tabla = "CREATE TABLE cliente (" + "id int NOT NULL AUTO_INCREMENT,"
 				+ "nombre varchar(250) DEFAULT NULL," + "apellido varchar(250) DEFAULT NULL,"
 				+ "direccion varchar(250) DEFAULT NULL," + "dni int DEFAULT NULL," + "fecha date DEFAULT NULL,"
