@@ -125,8 +125,8 @@ public class ModeloCliente {
 	public void connect() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://192.168.1.43", "remote",
-					"-Crocodile123");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost?useTimezone=true&server=UTC", "root",
+					"root");
 			System.out.println("Connected!");
 		} catch (SQLException | ClassNotFoundException ex) {
 			System.out.println("Cannot connect to DB");
@@ -161,7 +161,7 @@ public class ModeloCliente {
 
 	public String checkID(String table_name, int IDIntroducido) {
 		try {
-			String Querydb = "USE db;";
+			String Querydb = "USE CLIENTES;";
 			Statement stdb = connection.createStatement();
 			stdb.executeUpdate(Querydb);
 
@@ -184,6 +184,7 @@ public class ModeloCliente {
 			System.out.println("Error en la adquisicion de datos");
 
 		}
+		
 		return "";
 	}
 
@@ -206,7 +207,7 @@ public class ModeloCliente {
 		ResultSet registro = null;
 		try {
 			String Query = "SELECT id, nombre, apellido, direccion, dni, fecha FROM cliente;";
-			String Querydb = "USE db;";
+			String Querydb = "USE CLIENTES;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			registro = stdb.executeQuery(Query);
@@ -221,7 +222,7 @@ public class ModeloCliente {
 
 		try {
 			String Query = "SELECT nombre, apellido, direccion, dni from cliente WHERE id='" + idParametro + "';";
-			String Querydb = "USE db;";
+			String Querydb = "USE CLIENTES;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			ResultSet registro = stdb.executeQuery(Query);
@@ -245,7 +246,7 @@ public class ModeloCliente {
 
 	public void eliminarCliente(int idParametro) {
 		try {
-			String Querydb = "USE db;";
+			String Querydb = "USE CLIENTES;";
 			String Query = "DELETE FROM cliente WHERE id='" + idParametro + "';";
 
 			Statement stdb = getConnection().createStatement();
@@ -262,7 +263,7 @@ public class ModeloCliente {
 	public void modificarCliente(int idParametro, String nombre, String apellido, String direccion, String dni,
 			String fecha) {
 		try {
-			String Querydb = "USE db;";
+			String Querydb = "USE CLIENTES;";
 			String Query = "UPDATE cliente SET nombre='" + nombre + "', apellido='"+ apellido
 					+ "', direccion='" + direccion + "', fecha='" + fecha + "' WHERE id='"
 					+ idParametro + "';";
@@ -287,7 +288,7 @@ public class ModeloCliente {
 			String Query = "INSERT INTO cliente (nombre, apellido, direccion, dni, fecha) VALUE (" + "\"" + nombre
 					+ "\", \"" + apellido + "\", \"" + direccion + "\", '" + dni + "', '" + fecha
 					+ "');";
-			String Querydb = "USE db;";
+			String Querydb = "USE CLIENTES;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);
