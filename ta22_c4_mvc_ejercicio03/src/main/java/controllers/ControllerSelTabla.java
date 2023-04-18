@@ -16,9 +16,11 @@ public class ControllerSelTabla implements ActionListener {
 	ModelBD model = new ModelBD();
 	vistaPrincipal vistaP = new vistaPrincipal();
 	vistaPrincipalProyectos vistaProy = new vistaPrincipalProyectos();
-public void iniciarvista() {
-	this.vista.setVisible(true);
-}
+
+	public void iniciarvista() {
+		this.vista.setVisible(true);
+	}
+
 	public ControllerSelTabla() {
 		this.vista.btnCientificos.addActionListener(this);
 		this.vista.btnNewButton.addActionListener(this);

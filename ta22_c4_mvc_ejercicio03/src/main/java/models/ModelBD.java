@@ -302,7 +302,7 @@ public class ModelBD {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos crear la tabla" + "\n-------------------------------------------------------------");
 		try {
-			String Querydb = "USE " + db + ";";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(query);
@@ -319,7 +319,7 @@ public class ModelBD {
 				+ "Intentamos insertar datos en la tabla"
 				+ "\n-------------------------------------------------------------");
 		try {
-			String Querydb = "USE " + db + ";";
+			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);
