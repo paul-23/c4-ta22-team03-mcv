@@ -37,7 +37,6 @@ public class ControladorInicioProyectos implements ActionListener {
 	
 	public void iniciarVista() {
 		vista.setTitle("Asignacion de proyectos a Proyectos");
-		vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		vista.setVisible(true);
 	}
 
@@ -95,11 +94,13 @@ public class ControladorInicioProyectos implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (vista.btnAñadirProyecto == e.getSource()) {
-			vista.setVisible(false);
-			vistaAñadirProy.setVisible(true);
+		//	vista.setVisible(false);
+			ControllerAñadirProyectos  cap = new ControllerAñadirProyectos(modelo);
+			cap.iniciar();
+			//vistaAñadirProy.setVisible(true);
 		} else if (vista.btnConsultarProyecto == e.getSource() || vista.btnEliminarProyecto == e.getSource()
 				|| vista.btnModificarProyecto == e.getSource()) {
-			vista.setVisible(false);
+			//vista.setVisible(false);
 			ControllerSeleccionarProyectos cs = new ControllerSeleccionarProyectos(modelo);
 			cs.iniciar();
 		}

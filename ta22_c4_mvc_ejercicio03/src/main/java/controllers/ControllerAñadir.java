@@ -17,7 +17,6 @@ import views.vistaPrincipal;
  */
 public class ControllerAñadir implements ActionListener {
 	
-	LocalDate fecha = LocalDate.now();
 	
 	vistaAñadir vistaAñadir = new vistaAñadir();
 	vistaPrincipal vistaPrincipal = new vistaPrincipal();
@@ -37,17 +36,18 @@ public class ControllerAñadir implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (vistaAñadir.btnAñadir == e.getSource()) {
 			System.out.println("btnañadir");
-			modelo.insertData(vistaAñadir.textFieldNombre.getText(), vistaAñadir.textField_2.getText());
+			modelo.insertData(vistaAñadir.textFieldNombre.getText(), Integer.parseInt(vistaAñadir.textField_2.getText()));
 			vistaAñadir.setVisible(false);
-			ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
+			
+		/*	ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
 			ci.iniciarVista();
-			ci.mostrarCientifico();
+			ci.mostrarCientifico();*/
 		//ci.mostrarProyecto();
 		} else if (vistaAñadir.btnCancelar == e.getSource()) {
 			vistaAñadir.setVisible(false);
-			ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
+			/*ControladorInicio ci = new ControladorInicio(modelo, vistaPrincipal);
 			ci.iniciarVista();
-			ci.mostrarCientifico();
+			ci.mostrarCientifico();*/
 		}
 	}
 	

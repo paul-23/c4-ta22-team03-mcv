@@ -44,16 +44,8 @@ public class vistaSeleccionTabla extends JFrame {
 		contentPane.add(btnNewButton);
 
 		 btnCientificos = new JButton("Cientificos");
-		
-				// vistaPrincipal vppc = new vistaPrincipal();
-
-			
-	
 		btnCientificos.setBounds(105, 121, 117, 34);
 		contentPane.add(btnCientificos);
 		
-		btnNewButton_1 = new JButton("Asignado_a");
-		btnNewButton_1.setBounds(105, 174, 117, 39);
-		contentPane.add(btnNewButton_1);
 	}
 }

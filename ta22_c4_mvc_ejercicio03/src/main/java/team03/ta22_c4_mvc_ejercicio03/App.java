@@ -30,8 +30,10 @@ public class App {
 	                cst.iniciarvista();
 	        		ControladorInicio controlador = new ControladorInicio(modelo, vistaPrincipal);
 	        		ControladorInicioProyectos controladorincProy = new ControladorInicioProyectos(model, vpp);
+	        		modelo.connect();
+	        		modelo.createDB("Ej3asignacionCientificosProyectos");
 	        		controlador.iniciarBaseDatos();
-	        		controladorincProy.iniciarBaseDatos();
+	        		//controladorincProy.iniciarBaseDatos();
 	            }
 	        });
 

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 
 public class ModelBD {
 
-	Connection connection;
+	private Connection connection;
 	private int id;
 	private String nombre;
 	private String apellido;
@@ -314,12 +314,14 @@ public class ModelBD {
 	}
 
 	// METODO QUE INSERTA DATOS EN TABLAS MYSQL
-	public void insertData(String db, String Query) {
+	public void insertData(String nombre, int dni) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos insertar datos en la tabla"
 				+ "\n-------------------------------------------------------------");
+		connect();
 		try {
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
+		String	 Query = "INSERT INTO cientificos (nombre,dni) values(\""+nombre+"\","+dni+")";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);

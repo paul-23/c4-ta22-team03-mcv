@@ -5,11 +5,9 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.LocalDate;
 
 import models.ModelBDProy;
 import views.vistaAñadirProy;
-import views.vistaPrincipal;
 import views.vistaPrincipalProyectos;
 
 /**
@@ -43,9 +41,9 @@ public class ControllerAñadirProyectos implements ActionListener {
 			System.out.println("btnañadir");
 			modelo.insertData(nombre, id,horas);
 			vistaAñadirProy.setVisible(false);
-			ControladorInicioProyectos ci = new ControladorInicioProyectos(modelo, vistaPrincipalProy);
+			/*ControladorInicioProyectos ci = new ControladorInicioProyectos(modelo, vistaPrincipalProy);
 			ci.iniciarVista();
-			ci.mostrarProyecto();
+			ci.mostrarProyecto();*/
 		} else if (vistaAñadirProy.btnCancelar == e.getSource()) {
 			vistaAñadirProy.setVisible(false);
 			ControladorInicioProyectos ci = new ControladorInicioProyectos(modelo, vistaPrincipalProy);
