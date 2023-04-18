@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import models.ModelAsignacion;
 import models.ModelBD;
 import models.ModelBDProy;
 import views.vistaPrincipal;
@@ -14,6 +15,7 @@ public class ControllerSelTabla implements ActionListener {
 	vistaSeleccionTabla vista = new vistaSeleccionTabla();
 	ModelBDProy modelBD = new ModelBDProy();
 	ModelBD model = new ModelBD();
+	ModelAsignacion mas= new ModelAsignacion(); 
 	vistaPrincipal vistaP = new vistaPrincipal();
 	vistaPrincipalProyectos vistaProy = new vistaPrincipalProyectos();
 
@@ -37,6 +39,10 @@ public class ControllerSelTabla implements ActionListener {
 			ControladorInicioProyectos cip = new ControladorInicioProyectos(modelBD, vistaProy);
 			cip.iniciarVista();
 
+			
+		}else if(vista.btnAsignacion == e.getSource()) {
+			ControllerSeleccionAsignacion cas = new ControllerSeleccionAsignacion(mas);
+			cas.iniciar();			
 		}
 
 	}
