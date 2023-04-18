@@ -105,7 +105,7 @@ public class ModelBDProy {
 	public String getDireccion() {
 		return direccion;
 	}
-	
+
 	/**
 	 * @param direccion the direccion to set
 	 */
@@ -188,6 +188,7 @@ public class ModelBDProy {
 			Logger.getLogger(ModelBD.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
+
 	public void consultarProyectos(int idParametro) {
 
 		try {
@@ -212,7 +213,6 @@ public class ModelBDProy {
 		}
 	}
 
-	
 	public ResultSet consultarTodosProyectos() {
 		ResultSet registro = null;
 		try {
@@ -227,6 +227,7 @@ public class ModelBDProy {
 		}
 		return registro;
 	}
+
 	public String checkID(String table_name, int IDIntroducido) {
 		try {
 			connect();
@@ -255,6 +256,7 @@ public class ModelBDProy {
 		}
 		return "";
 	}
+
 	public void eliminarProyecto(int idParametro) {
 		connect();
 		try {
@@ -271,6 +273,7 @@ public class ModelBDProy {
 			JOptionPane.showMessageDialog(null, "Error al eliminar proyecto");
 		}
 	}
+
 	public void consultarproyectos(int idParametro) {
 
 		try {
@@ -294,6 +297,7 @@ public class ModelBDProy {
 			JOptionPane.showMessageDialog(null, "Error al obtener proyecto");
 		}
 	}
+
 	public void createTable(String db, String query) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos crear la tabla" + "\n-------------------------------------------------------------");
@@ -310,13 +314,13 @@ public class ModelBDProy {
 	}
 
 	// METODO QUE INSERTA DATOS EN TABLAS MYSQL
-	public void insertData(String nombre, int id,int horas) {
+	public void insertData(String nombre, int id, int horas) {
 		System.out.println("-------------------------------------------------------------\n"
 				+ "Intentamos insertar datos en la tabla"
 				+ "\n-------------------------------------------------------------");
 		try {
 			connect();
-			String Query = "INSERT INTO proyecto (nombre,  id, horas) VALUE (" + "\"" + nombre+	"\", '" + id + "', '" + horas+ "');";
+			String Query = "INSERT INTO proyecto (nombre,  id, horas) VALUE (" + "\"" + nombre + "\", '" + id + "', '"+ horas + "');";
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
@@ -328,12 +332,14 @@ public class ModelBDProy {
 		}
 	}
 
-
 	public void modificarProyecto(int id, String nombre, int horas) {
-		// TODO Auto-generated method stub
+		System.out.print(nombre);
+		System.out.print(horas);
+		System.out.print(id);
 		try {
+
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
-			String Query = "UPDATE proyecto SET nombre=" + nombre +","+"horas=" +horas+" WHERE ID="	+ id + ";";
+			String Query = "UPDATE Proyecto SET id = "+id+" , Nombre = \""+nombre+"\" , Horas = "+horas+" WHERE Id = "+id+ ";";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);
@@ -341,8 +347,7 @@ public class ModelBDProy {
 		} catch (SQLException ex) {
 			System.out.println(ex.getMessage());
 			JOptionPane.showMessageDialog(null, "Error al actualizar proyecto");
-		}		
+		}
 	}
-
 
 }
