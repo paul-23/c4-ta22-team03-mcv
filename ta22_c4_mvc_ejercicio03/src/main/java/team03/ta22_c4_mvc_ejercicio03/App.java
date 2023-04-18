@@ -25,15 +25,13 @@ public class App {
 	        		vistaPrincipalProyectos vpp = new vistaPrincipalProyectos();
 	            	ModelBD modelo = new ModelBD();
 	        		ModelBDProy model = new ModelBDProy();
-	        		ModelAsignacion midelas = new ModelAsignacion();
 	                //new vistaSeleccionTabla().setVisible(true);
 	                ControllerSelTabla cst = new ControllerSelTabla();
 	                cst.iniciarvista();
 	        		ControladorInicio controlador = new ControladorInicio(modelo, vistaPrincipal);
-	        		ControladorInicioProyectos controladorincProy = new ControladorInicioProyectos(model, vpp);
+	        		//ControladorInicioProyectos controladorincProy = new ControladorInicioProyectos(model, vpp);
 	        		modelo.connect();
 	        		modelo.createDB("Ej3asignacionCientificosProyectos");
-	        		midelas.createDB("Ej3asignacionCientificosProyectos");
 	        		controlador.iniciarBaseDatos();
 	        		//controladorincProy.iniciarBaseDatos();
 	            }

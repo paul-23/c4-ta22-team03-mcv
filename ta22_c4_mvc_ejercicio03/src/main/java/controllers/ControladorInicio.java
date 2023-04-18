@@ -58,18 +58,18 @@ public class ControladorInicio implements ActionListener {
 	}
 
 	public void crearTablaCientificos() {
-		String tabla = "CREATE TABLE CIENTIFICOS (dni int(11) NOT NULL , nombre nvarchar(250) DEFAULT NULL, PRIMARY KEY (dni));";
+		String tabla = "CREATE TABLE cientificos (dni int(11) NOT NULL , nombre nvarchar(250) DEFAULT NULL, PRIMARY KEY (dni));";
 		modelo.createTable("CIENTIFICOS", tabla);
 	}
 
 	public void cearTablaAsignado_a() {
-		String tabla = "CREATE TABLE ASIGNADO_A ( cientifico int(11) NOT NULL, proyecto char(4) NOT NULL, FOREIGN KEY (cientifico) REFERENCES CIENTIFICOS(dni) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (proyecto) REFERENCES PROYECTO(id) ON DELETE CASCADE ON UPDATE CASCADE);";
+		String tabla = "CREATE TABLE asignado_a ( cientifico int(11) NOT NULL, proyecto char(4) NOT NULL, FOREIGN KEY (cientifico) REFERENCES cientificos(dni) ON DELETE CASCADE ON UPDATE CASCADE, FOREIGN KEY (proyecto) REFERENCES proyecto(id) ON DELETE CASCADE ON UPDATE CASCADE);";
 		modelo.createTable("ASIGNADO_A", tabla);
 
 	}
 
 	public void crearProyecto() {
-		String tabla = "CREATE TABLE PROYECTO( id char(4) NOT NULL, Nombre nvarchar(250) NOT NULL, Horas int(5) NOT NULL, PRIMARY KEY(id));";
+		String tabla = "CREATE TABLE proyecto ( id char(4) NOT NULL, Nombre nvarchar(250) NOT NULL, Horas int(5) NOT NULL, PRIMARY KEY(id));";
 		modelo.createTable("PROYECTO", tabla);
 
 	}

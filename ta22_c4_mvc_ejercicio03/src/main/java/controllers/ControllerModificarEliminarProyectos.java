@@ -77,7 +77,7 @@ public class ControllerModificarEliminarProyectos implements ActionListener {
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (input == 0) {
 				modelo.eliminarProyecto(IDSeleccionado);
-
+				vistaModificarEliminarProyectos.setVisible(false);
 			}
 
 		} else if (vistaModificarEliminarProyectos.btnCancelar == e.getSource()) {

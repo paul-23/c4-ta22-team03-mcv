@@ -337,7 +337,7 @@ public class ModelBDProy {
 		try {
 
 			String Querydb = "USE Ej3asignacionCientificosProyectos;";
-			String Query = "UPDATE Proyecto SET id = "+id+" , Nombre = \""+nombre+"\" , Horas = "+horas+" WHERE Id = "+id+ ";";
+			String Query = "UPDATE proyecto SET id = "+id+" , Nombre = \""+nombre+"\" , Horas = "+horas+" WHERE Id = "+id+ ";";
 			Statement stdb = getConnection().createStatement();
 			stdb.executeUpdate(Querydb);
 			stdb.executeUpdate(Query);
