@@ -18,7 +18,7 @@ public class vistaSeleccionTabla extends JFrame {
 	private JPanel contentPane;
 	public JButton btnNewButton;
 	private JButton btnNewButton_1;
-	 private JButton btnAsignacion;
+	private JButton btnAsignacion;
 
 	/**
 	 * Launch the application.
@@ -40,17 +40,17 @@ public class vistaSeleccionTabla extends JFrame {
 		lblNewLabel.setBounds(105, 11, 202, 14);
 		contentPane.add(lblNewLabel);
 
-		 btnNewButton = new JButton("Proyectos");
+		btnNewButton = new JButton("Proyectos");
 		btnNewButton.setBounds(105, 60, 117, 34);
 		contentPane.add(btnNewButton);
 
-		 btnCientificos = new JButton("Cientificos");
+		btnCientificos = new JButton("Cientificos");
 		btnCientificos.setBounds(105, 121, 117, 34);
 		contentPane.add(btnCientificos);
-		
-		  btnAsignacion = new JButton("Asignacion");
-			btnAsignacion.setBounds(105, 121, 117, 34);
-			contentPane.add(btnAsignacion);
-		
+
+		btnAsignacion = new JButton("Asignacion");
+		btnAsignacion.setBounds(105, 121, 117, 34);
+		contentPane.add(btnAsignacion);
+
 	}
 }

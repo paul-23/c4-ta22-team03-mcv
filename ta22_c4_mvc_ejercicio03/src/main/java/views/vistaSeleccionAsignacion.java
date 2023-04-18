@@ -15,6 +15,7 @@ public class vistaSeleccionAsignacion extends JFrame {
 
 	private JPanel contentPane;
 	public static JTextField textFieldIDAsignacion;
+	public static  JTextField textFieldDNIAsignacion;
 	public JButton btnBuscar;
 	public JButton btnCancelar;
 	/**
@@ -49,6 +50,17 @@ public class vistaSeleccionAsignacion extends JFrame {
 		textFieldIDAsignacion.setBounds(164, 147, 197, 46);
 		contentPane.add(textFieldIDAsignacion);
 		textFieldIDAsignacion.setColumns(10);
+		
+		JLabel lblNewLabel_11 = new JLabel("DNI Cientifico");
+		lblNewLabel_11.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblNewLabel_11.setBounds(10, 156, 132, 29);
+		contentPane.add(lblNewLabel_11);
+		
+		textFieldDNIAsignacion = new JTextField();
+		textFieldDNIAsignacion.setFont(new Font("Arial", Font.PLAIN, 20));
+		textFieldDNIAsignacion.setBounds(164, 147, 197, 46);
+		contentPane.add(textFieldDNIAsignacion);
+		textFieldDNIAsignacion.setColumns(10);
 		
 		btnBuscar = new JButton("Buscar");
 		btnBuscar.setFont(new Font("Arial", Font.PLAIN, 20));

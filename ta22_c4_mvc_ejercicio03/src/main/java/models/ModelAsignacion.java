@@ -167,6 +167,7 @@ public class ModelAsignacion {
 				+ "Nos intentamos conectar a las base de datos: " + name
 				+ "\n-------------------------------------------------------------");
 		try {
+			connect();
 			String QueryDrop = "DROP DATABASE IF EXISTS " + name + ";";
 			String Query = "CREATE DATABASE " + name + ";";
 			Statement st = connection.createStatement();
@@ -177,7 +178,7 @@ public class ModelAsignacion {
 			Logger.getLogger(ModelBD.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	public void consultarAsignacion(int idParametro) {
+	public void consultarAsignacionProyectos(int idParametro) {
 
 		
 		try {
@@ -200,4 +201,5 @@ public class ModelAsignacion {
 			JOptionPane.showMessageDialog(null, "Error al obtener cientifico");
 		}
 	}
+	
 }

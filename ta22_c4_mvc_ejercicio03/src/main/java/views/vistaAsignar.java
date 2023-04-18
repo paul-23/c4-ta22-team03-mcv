@@ -56,14 +56,6 @@ public class vistaAsignar extends JFrame {
 		btnAñadirAsignacion.setBounds(45, 138, 150, 46);
 		contentPane.add(btnAñadirAsignacion);
 		
-		btnModificarCientifico = new JButton("Modificar Asignación");
-		btnModificarCientifico.setBounds(207, 138, 150, 46);
-		contentPane.add(btnModificarCientifico);
-		
-		btnEliminarAsignacion = new JButton("Eliminar Asignación");
-		btnEliminarAsignacion.setBounds(45, 195, 150, 46);
-		contentPane.add(btnEliminarAsignacion);
-		
 		btnConsultarAsignacion = new JButton("Consultar Asignación");
 		btnConsultarAsignacion.setBounds(207, 195, 150, 46);
 		contentPane.add(btnConsultarAsignacion);

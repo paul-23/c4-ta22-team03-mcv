@@ -8,10 +8,10 @@ import javax.swing.JOptionPane;
 import models.ModelAsignacion;
 import views.vistaSeleccionAsignacion;
 
-public class ControllerSeleccionAsignacion implements ActionListener{
+public class ControllerSeleccionAsignacion implements ActionListener {
 
 	vistaSeleccionAsignacion vistaSeleccionAsignacion = new vistaSeleccionAsignacion();
-	ModelAsignacion modelo  = new ModelAsignacion();
+	ModelAsignacion modelo = new ModelAsignacion();
 
 	public ControllerSeleccionAsignacion(ModelAsignacion modelo) {
 		this.modelo = modelo;
@@ -19,27 +19,37 @@ public class ControllerSeleccionAsignacion implements ActionListener{
 		this.vistaSeleccionAsignacion.btnBuscar.addActionListener(this);
 	}
 
-
 	public void iniciar() {
 		vistaSeleccionAsignacion.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (views.vistaSeleccionAsignacion.textFieldIDAsignacion == e.getSource() || vistaSeleccionAsignacion.btnBuscar == e.getSource()) {
-			if (!"".equals(views.vistaSeleccionAsignacion.textFieldIDAsignacion.getText())) {
-				if (vistaSeleccionAsignacion.textFieldIDAsignacion.getText().equals(modelo.checkID("asignacion", Integer.parseInt(views.vistaSeleccionAsignacion.textFieldIDAsignacion.getText())))) {
-					ControllerModificarEliminarProyectos me = new ControllerModificarEliminarProyectos(modelo, Integer.parseInt(vistaSeleccionAsignacion.textFieldIDAsignacion.getText()));
-					me.iniciar();
-					vistaSeleccionAsignacion.setVisible(false);
-				} else {
-					JOptionPane.showMessageDialog(vistaSeleccionAsignacion.getContentPane(), "El Asignacion seleccionado no existe");
-				}
-			} else {
-				JOptionPane.showMessageDialog(vistaSeleccionAsignacion.getContentPane(), "No has introducido ningun ID");
-			}
-		} 
-			
-		}
-	
+
+		if (vistaSeleccionAsignacion.textFieldIDAsignacion.getText() == null
+				|| vistaSeleccionAsignacion.textFieldDNIAsignacion.getText() != null) {
+			modelo.consultarAsignacionProyectos(
+					Integer.parseInt(vistaSeleccionAsignacion.textFieldIDAsignacion.getText()));
+
+		} else
+			modelo.consultarAsignacionProyectos(
+					Integer.parseInt(vistaSeleccionAsignacion.textFieldDNIAsignacion.getText()));
+
+	}
+	/*
+	 * if (views.vistaSeleccionAsignacion.textFieldIDAsignacion == e.getSource() ||
+	 * vistaSeleccionAsignacion.btnBuscar == e.getSource()) { if
+	 * (!"".equals(views.vistaSeleccionAsignacion.textFieldIDAsignacion.getText()))
+	 * { if (vistaSeleccionAsignacion.textFieldIDAsignacion.getText().equals(modelo.
+	 * checkID("asignacion",
+	 * Integer.parseInt(views.vistaSeleccionAsignacion.textFieldIDAsignacion.getText
+	 * ())))) {
+	 * 
+	 * vistaSeleccionAsignacion.setVisible(false); } else {
+	 * JOptionPane.showMessageDialog(vistaSeleccionAsignacion.getContentPane(),
+	 * "El Asignacion seleccionado no existe"); } } else {
+	 * JOptionPane.showMessageDialog(vistaSeleccionAsignacion.getContentPane(),
+	 * "No has introducido ningun ID"); } }
+	 */
+
 }
