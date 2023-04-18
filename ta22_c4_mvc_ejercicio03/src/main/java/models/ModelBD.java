@@ -202,7 +202,7 @@ public class ModelBD {
 				nombre = (registro.getString("nombre"));
 				dni = (registro.getInt("dni"));
 			} else {
-				System.out.println("No existe ningún cliente con ese id.");
+				System.out.println("No existe ningún cientifico con ese id.");
 			}
 
 			System.out.println("Datos obtenidos correctamente");

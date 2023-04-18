@@ -3,6 +3,7 @@ package team03.ta22_c4_mvc_ejercicio03;
 import controllers.ControladorInicio;
 import controllers.ControladorInicioProyectos;
 import controllers.ControllerSelTabla;
+import models.ModelAsignacion;
 import models.ModelBD;
 import models.ModelBDProy;
 import views.vistaAñadir;
@@ -24,6 +25,7 @@ public class App {
 	        		vistaPrincipalProyectos vpp = new vistaPrincipalProyectos();
 	            	ModelBD modelo = new ModelBD();
 	        		ModelBDProy model = new ModelBDProy();
+	        		ModelAsignacion midelas = new ModelAsignacion();
 	                //new vistaSeleccionTabla().setVisible(true);
 	                ControllerSelTabla cst = new ControllerSelTabla();
 	                cst.iniciarvista();
@@ -31,6 +33,7 @@ public class App {
 	        		ControladorInicioProyectos controladorincProy = new ControladorInicioProyectos(model, vpp);
 	        		modelo.connect();
 	        		modelo.createDB("Ej3asignacionCientificosProyectos");
+	        		midelas.createDB("Ej3asignacionCientificosProyectos");
 	        		controlador.iniciarBaseDatos();
 	        		//controladorincProy.iniciarBaseDatos();
 	            }

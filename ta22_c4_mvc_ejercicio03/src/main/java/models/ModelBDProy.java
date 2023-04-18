@@ -203,7 +203,7 @@ public class ModelBDProy {
 				nombre = (registro.getString("nombre"));
 				id = (registro.getInt("idParametro"));
 			} else {
-				System.out.println("No existe ningún cliente con ese id.");
+				System.out.println("No existe ningún proyecto con ese id.");
 			}
 
 			System.out.println("Datos obtenidos correctamente");
