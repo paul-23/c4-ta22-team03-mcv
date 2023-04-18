@@ -54,7 +54,7 @@ public class ControladorModificarEliminar implements ActionListener {
 		ControladorSeleccionar cs = new ControladorSeleccionar(modelo);
 		cs.iniciarModificarEliminar();
 	}
-	
+
 	public void cerrarVentanaVolverInicio() {
 		vistaModificarEliminar.setVisible(false);
 		ControladorInicio ci = new ControladorInicio(modelo, vp);
@@ -64,6 +64,7 @@ public class ControladorModificarEliminar implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		if (vistaModificarEliminar.btnModificar == e.getSource()) {
 
 			modelo.modificarCliente(IDSeleccionado, vistaModificarEliminar.textFieldNombre.getText(),

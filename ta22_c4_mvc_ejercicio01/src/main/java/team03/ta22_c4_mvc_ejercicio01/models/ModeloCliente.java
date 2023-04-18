@@ -184,6 +184,7 @@ public class ModeloCliente {
 			System.out.println("Error en la adquisicion de datos");
 
 		}
+		
 		return "";
 	}
 
