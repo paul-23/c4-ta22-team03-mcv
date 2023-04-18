@@ -29,9 +29,9 @@ public class ControllerSeleccionarProyectos implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (vistaSeleccionarProyectos.textFieldIDProyectos == e.getSource() || vistaSeleccionarProyectos.btnBuscar == e.getSource()) {
-			if (!"".equals(vistaSeleccionarProyectos.textFieldIDProyectos.getText())) {
-				if (vistaSeleccionarProyectos.textFieldIDProyectos.getText().equals(modelo.checkID("Proyectos", Integer.parseInt(vistaSeleccionarProyectos.textFieldIDProyectos.getText())))) {
+		if (views.vistaSeleccionarProyectos.textFieldIDProyectos == e.getSource() || vistaSeleccionarProyectos.btnBuscar == e.getSource()) {
+			if (!"".equals(views.vistaSeleccionarProyectos.textFieldIDProyectos.getText())) {
+				if (vistaSeleccionarProyectos.textFieldIDProyectos.getText().equals(modelo.checkID("proyecto", Integer.parseInt(views.vistaSeleccionarProyectos.textFieldIDProyectos.getText())))) {
 					ControllerModificarEliminarProyectos me = new ControllerModificarEliminarProyectos(modelo, Integer.parseInt(vistaSeleccionarProyectos.textFieldIDProyectos.getText()));
 					me.iniciar();
 					vistaSeleccionarProyectos.setVisible(false);

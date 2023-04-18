@@ -41,12 +41,12 @@ public class ControllerModificarEliminar implements ActionListener {
 		vistaModificarEliminar.setVisible(true);
 		obtenerDatosUsuario();
 	}
-
+	/*PRoblema 1*/
 	public void obtenerDatosUsuario() {
 		modelo.consultarcientificos(IDSeleccionado);
 		vistaModificarEliminar.textFieldNombre.setText(modelo.getNombre());
 		vistaModificarEliminar.textFieldDNI.setText(Integer.toString(modelo.getDni()));
-		vistaModificarEliminar.textFieldAsignado.setText(modelo.getNombre_Proy());
+		//vistaModificarEliminar.textFieldAsignado.setText(modelo.getNombre_Proy());
 		
 	}
 
@@ -67,14 +67,14 @@ public class ControllerModificarEliminar implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (vistaModificarEliminar.btnModificar == e.getSource()) {
 
-			modelo.modificarCientifico(IDSeleccionado, vistaModificarEliminar.textFieldNombre.getText(),
-					vistaModificarEliminar.textFieldDNI.getText(), fecha.toString());
+			modelo.modificarCientifico( vistaModificarEliminar.textFieldNombre.getText(),
+					Integer.parseInt(vistaModificarEliminar.textFieldDNI.getText()));
 			cerrarVentanaVolverInicio();
 
 		} else if (vistaModificarEliminar.btnEliminar == e.getSource()) {
 
 			JLabel label = new JLabel("<html><h1>¿Eliminar el cientifico " + modelo.getNombre() + " (DNI: "
-					+ IDSeleccionado + ")?</h1></html>");
+					+ modelo.getDni() + ")?</h1></html>");
 			label.setFont(new Font("Arial", Font.BOLD, 20)); // Cambiamos la fuente y tamaño del texto
 			int input = JOptionPane.showConfirmDialog(vistaModificarEliminar.contentPane, label, "Eliminar Cliente",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);

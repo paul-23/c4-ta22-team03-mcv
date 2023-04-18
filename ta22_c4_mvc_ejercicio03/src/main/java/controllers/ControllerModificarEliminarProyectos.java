@@ -43,7 +43,9 @@ public class ControllerModificarEliminarProyectos implements ActionListener {
 	public void obtenerDatosUsuario() {
 		modelo.consultarproyectos(IDSeleccionado);
 		vistaModificarEliminarProyectos.textFieldNombre.setText(modelo.getNombre());
-		vistaModificarEliminarProyectos.textFieldID.setText(Integer.toString(modelo.getDni()));
+		vistaModificarEliminarProyectos.textFieldID.setText(Integer.toString(modelo.getId()));
+		vistaModificarEliminarProyectos.textField.setText(Integer.toString(modelo.getHoras()));
+
 	}
 
 	public void cerrarVentanaVolver() {
@@ -63,19 +65,19 @@ public class ControllerModificarEliminarProyectos implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (vistaModificarEliminarProyectos.btnModificar == e.getSource()) {
 
-			modelo.modificarProyecto(Integer.parseInt(vistaModificarEliminarProyectos.textFieldID.getText()), 
-				vistaModificarEliminarProyectos.textFieldNombre.getText(),Integer.parseInt(vistaModificarEliminarProyectos.textField.getText()));
+			modelo.modificarProyecto(Integer.parseInt(vistaModificarEliminarProyectos.textFieldID.getText()),
+					vistaModificarEliminarProyectos.textFieldNombre.getText(),Integer.parseInt(vistaModificarEliminarProyectos.textField.getText()));
 
 		} else if (vistaModificarEliminarProyectos.btnEliminar == e.getSource()) {
 
-			JLabel label = new JLabel("<html><h1>¿Eliminar el cientifico " + modelo.getNombre() + " (ID: " + IDSeleccionado
+			JLabel label = new JLabel("<html><h1>¿Eliminar el proyecto " + modelo.getNombre() + " (ID: " + modelo.getId()
 					+ ")?</h1></html>");
 			label.setFont(new Font("Arial", Font.BOLD, 20)); // Cambiamos la fuente y tamaño del texto
 			int input = JOptionPane.showConfirmDialog(vistaModificarEliminarProyectos.contentPane, label, "Eliminar Proyecto",
 					JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 			if (input == 0) {
 				modelo.eliminarProyecto(IDSeleccionado);
-				cerrarVentanaVolverInicio();
+
 			}
 
 		} else if (vistaModificarEliminarProyectos.btnCancelar == e.getSource()) {

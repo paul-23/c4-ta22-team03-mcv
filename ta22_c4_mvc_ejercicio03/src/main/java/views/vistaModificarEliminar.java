@@ -80,16 +80,6 @@ public class vistaModificarEliminar extends JFrame {
 		btnModificar.setBounds(250, 228, 142, 44);
 		contentPane.add(btnModificar);
 		
-		lblAsignadoa = new JLabel("Asignado_a:");
-		lblAsignadoa.setFont(new Font("Arial", Font.PLAIN, 20));
-		lblAsignadoa.setBounds(28, 180, 122, 44);
-		contentPane.add(lblAsignadoa);
-		
-		textFieldAsignado = new JTextField();
-		textFieldAsignado.setFont(new Font("Arial", Font.PLAIN, 20));
-		textFieldAsignado.setColumns(10);
-		textFieldAsignado.setBounds(160, 180, 176, 44);
-		contentPane.add(textFieldAsignado);
 	}
 
 }
