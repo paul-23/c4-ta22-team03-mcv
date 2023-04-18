@@ -1,4 +1,4 @@
-package team03.ta22_c4_mvc_ejercicio01.models;
+package models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  */
 
-public class ModeloCliente {
+public class ModeloVideos {
 
 	Connection connection;
 	private int id;
@@ -139,7 +139,7 @@ public class ModeloCliente {
 			connection.close();
 			JOptionPane.showMessageDialog(null, "Se ha finalizado la conexión con el servidor");
 		} catch (SQLException ex) {
-			Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(ModeloVideo.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
 

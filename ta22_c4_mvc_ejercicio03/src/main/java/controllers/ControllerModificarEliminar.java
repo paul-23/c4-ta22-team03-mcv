@@ -4,7 +4,7 @@
 package controllers;
 
 import models.ModelBD;
-import views.vistaModificarEliminar;
+import views.vistaME;
 
 /**
  * @author Team 03 (Alejandro, Arnau y Paul)
@@ -12,7 +12,7 @@ import views.vistaModificarEliminar;
  */
 public class ControllerModificarEliminar {
 	
-	vistaModificarEliminar vistaModificarEliminar = new vistaModificarEliminar();
+	vistaME vistaModificarEliminar = new vistaME();
 	ModelBD modelo;
 	private int IDSeleccionado;
 

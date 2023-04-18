@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
  *
  */
 
-public class vistaModificarEliminar extends JFrame {
+public class vistaME extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -25,7 +25,7 @@ public class vistaModificarEliminar extends JFrame {
 	private JTextField textField_2;
 	private JPanel contentPane;
 	
-	public vistaModificarEliminar() {
+	public vistaME() {
 		setTitle("Modificar / Eliminar Cliente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 907, 345);

@@ -1,4 +1,4 @@
-package team03.ta22_c4_mvc_ejercicio01.models;
+package models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

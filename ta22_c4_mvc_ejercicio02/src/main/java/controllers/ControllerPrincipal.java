@@ -31,7 +31,6 @@ public class ControllerPrincipal implements ActionListener {
 
 	public void iniciarVista() {
 		vista.setTitle("Clientes y sus Videos");
-		vista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		vista.setVisible(true);
 
 		this.vista.btnAñadirCliente.addActionListener(this);
@@ -46,7 +45,7 @@ public class ControllerPrincipal implements ActionListener {
 
 			vista.setVisible(false);
 			ControllerAñadirCliente ca = new ControllerAñadirCliente(cliente, db);
-			ca.iniciar(cliente, db);
+			ca.iniciar(cliente, db, ca);
 
 		} else if (vista.btnModificarEliminarCliente == e.getSource()) {
 

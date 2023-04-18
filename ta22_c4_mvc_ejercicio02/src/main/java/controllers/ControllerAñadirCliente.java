@@ -14,27 +14,27 @@ import views.VistaPrincipal;
 
 public class ControllerAñadirCliente implements ActionListener {
 
-	VistaAñadirCliente vista;
+	VistaAñadirCliente vista = new VistaAñadirCliente();
 	LocalDate fecha = LocalDate.now();
 
-	VistaAñadirCliente vistaAñadir = new VistaAñadirCliente();
-	VistaPrincipal vistaPrincipal = new VistaPrincipal();
+	VistaPrincipal vistaPrincipal;
 	Cliente cliente;
 	Videos video;
 	DataBase db;
+	VistaAñadirCliente ca;
 
 	public ControllerAñadirCliente(Cliente cliente, DataBase db) {
 		vista = new VistaAñadirCliente();
 		this.cliente = cliente;
 		this.db = db;
-		this.vistaAñadir.btnAñadir.addActionListener(this);
-		this.vistaAñadir.btnCancelar.addActionListener(this);
 	}
 
-	public void iniciar(Cliente cliente, DataBase db) {
+	public void iniciar(Cliente cliente, DataBase db, ControllerAñadirCliente ca) {
+		this.ca = ca;
 		vista.setVisible(true);
 		vista.setTitle("Añadir Cliente");
 		this.vista.btnAñadir.addActionListener(this);
+		this.vista.btnCancelar.addActionListener(this);
 
 	}
 
@@ -47,8 +47,11 @@ public class ControllerAñadirCliente implements ActionListener {
 			db.insertData("db", "Clientes", "nombre, apellido, direccion, dni", entr);
 
 		} else if (vista.btnCancelar == e.getSource()) {
+			System.out.println(3);
+			ControllerPrincipal ci = new ControllerPrincipal(db, cliente, video, vistaPrincipal);
+			ci.iniciarVista();
 			vista.setVisible(false);
-			vistaPrincipal.setVisible(true);
+
 		}
 
 	}
